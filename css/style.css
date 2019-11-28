@@ -1,0 +1,33 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
+
+
+
+:root {
+    --background: #ffffff;
+    --text-color: #000000;
+    --politics: #EBB40D;
+    --energy: #5CC763;
+    --social: #22908C;
+    --technology: #4460A2;
+    --science: #440D54;
+}
+
+body {
+    font-size: 18px;
+    line-height: 1.5;
+
+    background-color: var(--background);
+    color: var(--text-color);
+    margin: 40px;
+}
+
+
+h1, h2 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+}
