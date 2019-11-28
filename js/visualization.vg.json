@@ -1,0 +1,218 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "todo",
+  "padding": 40,
+  "autosize": {"type": "pad", "contains": "padding", "resize": false},
+  "signals": [
+    {
+      "name": "active",
+      "value": {},
+      "on": [
+        {
+          "events": "@nodes:mouseover, @nodes:touchstart",
+          "update": " item()"
+        },
+        {"events": "window:mouseout, window:touchend", "update": "{}"}
+      ]
+    },
+    {
+      "name": "indicator",
+      
+      "value": "temperature",
+      "bind": {
+        "input": "select",
+        "name": "indicator",
+        "element": "test",
+        "options": ["temperature", "co2-concentration"]
+      }
+    }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "url": "data/ccdata.json",
+      "format": {"type": "json", "property": "data"},
+      "transform": [
+        {"type": "filter", "expr": "datum.ind == indicator"},
+        {"type": "filter", "expr": "datum.year < 2041"},
+        {"type": "filter", "expr": "datum.scenario != 'BAU'"},
+        {"type": "collect", "sort": {"field": "year"}}
+      ]
+    },
+    {
+      "name": "table_1",
+      "source": "table",
+      "transform": [{"type": "extent", "field": "year", "signal": "xextent"}]
+    },
+    {
+      "name": "fiction",
+      "values": [
+      ],
+      "transform": [
+        {
+          "type": "lookup",
+          "from": "table",
+          "key": "year",
+          "fields": ["year"],
+          "values": ["value", "scenario"],
+          "as": ["value", "scenario"],
+          "default": null
+        },
+        {"type": "collect", "sort": {"field": "year"}}
+      ]
+    },
+    {
+      "name": "fiction_tooltip",
+      "source": "fiction",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "if(active!={}, datum.id == active.id, datum.default==true)"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "yscale",
+      "type": "linear",
+      "domain": {"data": "table", "field": "year"},
+      "range": "height",
+      "reverse": true,
+      "zero": false
+    },
+    {
+      "name": "xscale",
+      "domain": {"data": "table", "field": "value"},
+      "nice": true,
+      "range": "width",
+      "zero": false
+    },
+    {
+      "name": "colorC",
+      "type": "ordinal",
+      "range": "ordinal",
+      "domain": {"data": "fiction", "field": "cat"}
+    },
+    {
+      "name": "size",
+      "type": "ordinal",
+      "round": true,
+      "range": [100, 250, 500],
+      "domain": {"data": "fiction", "field": "size"}
+    }
+  ],
+  "axes": [
+    {"orient": "left", "scale": "yscale", "format": "f"},
+    {
+      "orient": "top",
+      "scale": "xscale",
+      "tickCount": 3,
+      "title": {
+        "signal": "if(indicator=='temperature', ['Temperature change', 'ºC'], ['Atmosferic CO2 concentration', 'in parts per million (ppm)'])"
+      },
+      "encode": {
+        "labels": {
+          "update": {
+            "text": {
+              "signal": "if(datum.value, if(indicator=='temperature', '  +'+datum.label+' ºC', '  '+datum.label+' ppm'),'')"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "name": "nodes",
+      "type": "symbol",
+      "from": {"data": "fiction"},
+      "encode": {
+        "enter": {
+          "fill": {"scale": "colorC", "field": "cat"},
+          "yfocus": {"scale": "yscale", "field": "year"},
+          "xfocus": {"scale": "xscale", "field": "value"},
+          "zindex": {"value": 0}
+        },
+        "update": {
+          "size": {"scale": "size", "field": "size"},
+          "stroke": {"value": "black"},
+          "strokeWidth": {"value": 0},
+          "zindex": {"value": 0}
+        },
+        "hover": {
+          "stroke": {"value": "purple"},
+          "strokeWidth": {"value": 3},
+          "zindex": {"value": 1}
+        }
+      },
+      "transform": [
+        {
+          "type": "force",
+          "iterations": 300,
+          "static": false,
+          "forces": [
+            {"force": "collide", "iterations": 1, "radius": 10},
+            {"force": "x", "x": "xfocus", "strength": 0.2},
+            {"force": "y", "y": "yfocus", "strength": 0.1}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "name": "line",
+      "encode": {
+        "update": {
+          "y": {"signal": "active.y"},
+          "fill": {"value": "red"},
+          "x": {"signal": "active.x+7"},
+          "x2": {"field": {"group": "width"}},
+          "strokeWidth": {"value": 1},
+          "stroke": [
+  {
+    "test": "active.datum",
+    "value": "grey"
+  },
+  {"value": "transparent"}
+]
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "titles",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "y": {"signal": "active.y-3"},
+          "x": {"field": {"group": "width"}},
+          "align": {"value": "center"},
+          
+          "text": {"signal": "if(active.datum,active.datum.title,'')"},
+          "fill": {"value": "grey"}
+        }
+      }
+    },
+    {
+      "type": "group",
+      "from": {
+        "facet": {"name": "series", "data": "table", "groupby": "scenario"}
+      },
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "series"},
+          "encode": {
+            "enter": {
+              "zindex": {"value": 2},
+              "x": {"scale": "xscale", "field": "value"},
+              "y": {"scale": "yscale", "field": "year"},
+              "strokeWidth": {"value": 3}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
