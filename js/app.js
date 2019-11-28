@@ -1,3 +1,18 @@
+let spec = "js/visualization.vg.json"
+var opt = {
+  defaultStyle: false,
+  renderer:"svg",
+  width: 400,
+  height: 600,
+  actions: false,
+  config: "js/config.json",
+}
+console.log(data)
+vegaEmbed('#view',spec, opt).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  result.view.insert('fiction',data).runAsync();
+  }).catch(console.error);
+
 const svg = d3.select("svg")
 
 data = data.map((d, i) => {
@@ -222,4 +237,4 @@ resize()
 
 window.addEventListener("resize", function() {
     resize()
-}) 
+})
