@@ -23,7 +23,7 @@
         "input": "select",
         "name": "indicator",
         "element": "test",
-        "options": ["temperature", "co2-concentration"]
+        "options": ["temperature", "co2-concentration", "co2-emissions"]
       }
     }
   ],
@@ -35,7 +35,8 @@
       "transform": [
         {"type": "filter", "expr": "datum.ind == indicator"},
         {"type": "filter", "expr": "datum.year < 2041"},
-        {"type": "filter", "expr": "datum.scenario != 'BAU'"},
+        {"type": "filter", "expr": "datum.scenario == 'act-Now'"},
+        
         {"type": "collect", "sort": {"field": "year"}}
       ]
     },
@@ -98,7 +99,7 @@
       "name": "size",
       "type": "ordinal",
       "round": true,
-      "range": [100, 250, 500],
+      "range": [300, 500, 800],
       "domain": {"data": "fiction", "field": "size"}
     }
   ],
@@ -109,13 +110,13 @@
       "scale": "xscale",
       "tickCount": 3,
       "title": {
-        "signal": "if(indicator=='temperature', ['Temperature change', 'ºC'], ['Atmosferic CO2 concentration', 'in parts per million (ppm)'])"
+        "signal": "if(indicator=='temperature', ['Temperature change', 'ºC'], if(indicator=='co2-concentration',['Atmosferic CO2 concentration', 'in parts per million (ppm)'],['Global CO2 emissions', ' in Giga tons of CO2 per year']))"
       },
       "encode": {
         "labels": {
           "update": {
             "text": {
-              "signal": "if(datum.value, if(indicator=='temperature', '  +'+datum.label+' ºC', '  '+datum.label+' ppm'),'')"
+              "signal": "if(datum.value, if(indicator=='temperature', '  +'+datum.label+' ºC', if(indicator=='co2-concentration', datum.label+' ppm',  datum.label+' GTons')),'')"
             }
           }
         }
@@ -130,12 +131,14 @@
       "encode": {
         "enter": {
           "fill": {"scale": "colorC", "field": "cat"},
-          "yfocus": {"scale": "yscale", "field": "year"},
-          "xfocus": {"scale": "xscale", "field": "value"},
+          "size": {"scale": "size", "field": "size"},
           "zindex": {"value": 0}
+
         },
         "update": {
-          "size": {"scale": "size", "field": "size"},
+          "yfocus": {"scale": "yscale", "field": "year"},
+          "xfocus": {"scale": "xscale", "field": "value"},
+          
           "stroke": {"value": "black"},
           "strokeWidth": {"value": 0},
           "zindex": {"value": 0}
@@ -149,12 +152,14 @@
       "transform": [
         {
           "type": "force",
-          "iterations": 300,
+          "iterations": 500,
           "static": false,
+          "restart":true,
+          "alpha":0.6,
           "forces": [
-            {"force": "collide", "iterations": 1, "radius": 10},
-            {"force": "x", "x": "xfocus", "strength": 0.2},
-            {"force": "y", "y": "yfocus", "strength": 0.1}
+            {"force": "collide", "iterations": 1, "radius": 15},
+            {"force": "x", "x": "xfocus", "strength": 0.4},
+            {"force": "y", "y": "yfocus", "strength": 0.2}
           ]
         }
       ]

@@ -20,7 +20,7 @@
     "tickExtra": true,
     "labelAlign": "left",
     "labelBaseline": "top",
-    "labelPadding": 5,
+    "labelPadding": 10,
     "titlePadding": 10,
     "titleFontWeight": "bold",
     "titleFontSize": 14
