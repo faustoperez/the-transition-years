@@ -8,15 +8,15 @@ html { font-family: 'Inter', sans-serif; }
 
 
 :root {
-    --background: #ffffff;
-    --text-color: #333333;
+    --background: #Ffffff;
+    --text-color: #111111;
     --text-color-gray: #8a8a8a;
-    --quetzal: #22908C;
-    --politics: #EBB40D;
-    --energy: #DB780D;
-    --social: #D80B39;
-    --technology: #426AAE;
-    --science: #7EB358;
+    --accent: #0000FF;
+    --politics: #E993A6;
+    --energy: #F0CD2D;
+    --social: #EC4D42;
+    --technology: #4EA742;
+    --science: #4D95D6;
 }
 
 body {
@@ -31,7 +31,7 @@ body {
 
 a {
     text-decoration: underline;
-    color: var(--quetzal);
+    color: var(--accent);
 }
 
 p {
@@ -58,7 +58,7 @@ h1 {
     height: 16px;
     border-radius: 50%;
     margin: 0 12px 0 0;
-    background-color: var(--quetzal);
+    background-color: var(--accent);
     
 }
 
