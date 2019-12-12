@@ -3,7 +3,7 @@ var opt = {
   defaultStyle: false,
   renderer:"svg",
   width: 400,
-  height: 600,
+  height: 2000,
   actions: false,
   config: "js/config.json",
 }

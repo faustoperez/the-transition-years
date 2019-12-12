@@ -7,27 +7,152 @@ html { font-family: 'Inter', sans-serif; }
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
 
 
-
 :root {
     --background: #ffffff;
-    --text-color: #000000;
+    --text-color: #333333;
+    --text-color-gray: #8a8a8a;
+    --quetzal: #22908C;
     --politics: #EBB40D;
-    --energy: #5CC763;
-    --social: #22908C;
-    --technology: #4460A2;
-    --science: #440D54;
+    --energy: #DB780D;
+    --social: #D80B39;
+    --technology: #426AAE;
+    --science: #7EB358;
 }
 
 body {
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.75;
 
     background-color: var(--background);
     color: var(--text-color);
-    margin: 40px;
+    margin: 100px 40px;
 }
 
 
+a {
+    text-decoration: underline;
+    color: var(--quetzal);
+}
+
+p {
+    margin: 1rem 0;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+}
+
 h1, h2 {
     font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.legend span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: 0 12px 0 0;
+    background-color: var(--quetzal);
+    
+}
+
+.legend span.politics {
+    background-color: var(--politics);
+}
+
+.legend span.energy {
+    background-color: var(--energy);
+}
+
+.legend span.technology {
+    background-color: var(--technology);
+}
+
+.legend span.science {
+    background-color: var(--science);
+}
+
+.legend span.social {
+    background-color: var(--social);
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    margin: 4px 0 0 16px;
+    font-size: 14px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    margin-top: 36px;
+    margin-bottom: 12px;
+    max-width: 300px;
+    line-height: 1.5;
+    font-size: 12px;
+    color: var(--text-color-gray);
+}
+
+header {
+    margin-right: 40px;
+    max-width: 600px;
+}
+
+header img {
+    margin: 12px 0 0 8px;
+}
+
+.about {
+    max-width: 600px;
+    margin-top: 60px;
+}
+
+.references {
+    margin-top: 60px;
+}
+
+.references ol {
+    list-style: decimal;
+    font-size: 12px;
+    margin-top: 1rem;
+    padding-inline-start: 40px;
+    column-count: 3;
+    column-gap: 120px;
+}
+
+.references li {
+    margin: 1rem 0;
+}
+
+@media screen and (max-width: 1280px) {
+
+    .references ol {
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    
+    body {
+        margin: 60px 24px; 
+    }
+
+    main {
+        display: block;
+    }
+
+    .references ol {
+        padding-inline-start: 20px;
+        column-count: 1;
+        column-gap: 0;
+    }
 }
