@@ -111,6 +111,35 @@ header img {
     margin: 12px 0 0 8px;
 }
 
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.flowElement {
+ display: block;
+ margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin-right: 40px;
+  max-width: 600px;
+}
+.sticky {
+  position: fixed;
+  display: block;
+ margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin-right: 40px;
+  max-width: 600px;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+/*.sticky + .content {
+  padding-top: 102px;
+}*/
 .about {
     max-width: 600px;
     margin-top: 60px;

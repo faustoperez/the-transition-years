@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "todo",
-  "padding": 40,
+  "padding": {"left": 40, "top": 40, "right": 120, "bottom": 50},
   "autosize": {"type": "pad", "contains": "padding", "resize": false},
   "signals": [
     {
@@ -190,10 +190,11 @@
       "interactive": false,
       "encode": {
         "update": {
-          "y": {"signal": "active.y-3"},
+          "y": {"signal": "active.y"},
           "x": {"field": {"group": "width"}},
-          "align": {"value": "center"},
-          
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"},
+          "lineBreak": {"value": "\n"},
           "text": {"signal": "if(active.datum,active.datum.title,'')"},
           "fill": {"value": "grey"}
         }

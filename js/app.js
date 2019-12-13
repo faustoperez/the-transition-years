@@ -7,7 +7,6 @@ var opt = {
   actions: false,
   config: "js/config.json",
 }
-console.log(data)
 vegaEmbed('#view',spec, opt).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   result.view.insert('fiction',data).runAsync();
@@ -146,95 +145,117 @@ groups
         }
     })
 
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
 
-const selectTag = document.querySelector("select")
 
-selectTag.addEventListener("change", function() {
-    data.sort((a, b) => {
-         if (this.value == "imdb") {
-            return d3.descending(a.imdb, b.imdb)
-         } else if (this.value == "metascore") {
-            return d3.descending(a.metascore, b.metascore)
-         } else if (this.value == "title") {
-            return d3.ascending(a.title, b.title)
-         } else if (this.value == "difference"){
-          return d3.descending(a.difference, b.difference)   
-        } else {
-             return d3.ascending(a.year, b.year)
-         }
-    })
 
-    groups
-        .data(data, (d, i) => { return d.title })
-        .transition()
-        .duration(1000)
-        .attr("transform", (d, i) => { return `translate(0, ${i * 40})` })
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+    // Get the header
+    var header = document.getElementById("myHeader");
+    var sizeD = document.getElementById("view");
 
-    imdbPath
-        .datum(data, (d, i) => { return d.title })
-        .transition()
-        .duration(1000)
-        .attr("d", imdbLine)
-    
-    metascorePath
-        .datum(data, (d, i) => { return d.title })
-        .transition()
-        .duration(1000)
-        .attr("d", metascoreLine)
-    
-    areaPath
-        .datum(data, (d, i) => { return d.title })
-        .transition()
-        .duration(1000)
-        .attr("d", area)
-})
+    var about = sizeD.offsetHeight + sizeD.offsetTop - header.offsetHeight - 50
 
-const resize = function() {
-    const svgTag = document.querySelector("svg")
-    const svgWidth = svgTag.clientWidth
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+    console.log('window '+ window.pageYOffset)
+    console.log(sizeD.offsetHeight)
+    console.log(sizeD.offsetTop)
+    console.log('about ' + about)
+  if (window.pageYOffset > sticky && window.pageYOffset < about) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}   
+//const selectTag = document.querySelector("select")
+//console.log(document)
+//selectTag.addEventListener("change", function() {
+//    data.sort((a, b) => {
+//         if (this.value == "imdb") {
+//            return d3.descending(a.imdb, b.imdb)
+//         } else if (this.value == "metascore") {
+//            return d3.descending(a.metascore, b.metascore)
+//         } else if (this.value == "title") {
+//            return d3.ascending(a.title, b.title)
+//         } else if (this.value == "difference"){
+//          return d3.descending(a.difference, b.difference)   
+//        } else {
+//             return d3.ascending(a.year, b.year)
+//         }
+//    })
+//
+//    groups
+//        .data(data, (d, i) => { return d.title })
+//        .transition()
+//        .duration(1000)
+//        .attr("transform", (d, i) => { return `translate(0, ${i * 40})` })
+//
+//    imdbPath
+//        .datum(data, (d, i) => { return d.title })
+//        .transition()
+//        .duration(1000)
+//        .attr("d", imdbLine)
+//    
+//    metascorePath
+//        .datum(data, (d, i) => { return d.title })
+//        .transition()
+//        .duration(1000)
+//        .attr("d", metascoreLine)
+//    
+//    areaPath
+//        .datum(data, (d, i) => { return d.title })
+//        .transition()
+//        .duration(1000)
+//        .attr("d", area)
+//})
 
-    scoreScale
-        .range([420 / 960 * svgWidth, 900 / 960 * svgWidth])
-
-    groups
-        .selectAll("circle.metascore")
-        .attr("cx", (d, i) => { return scoreScale(d.metascore) })
-    
-    
-    groups
-        .selectAll("circle.imdb")
-        .attr("cx", (d, i) => { return scoreScale(d.imdb) })
-    
-    groups
-        .selectAll("text.title")
-        .attr("x", (svgWidth >= 960) ? 90 : 70)
-    
-    metascoreLine
-        .x((d, i) => { return scoreScale(d.metascore)})
-    
-    metascorePath
-        .attr("d", metascoreLine)
-
-    imdbLine
-        .x((d, i) => { return scoreScale(d.imdb)})
-    
-    imdbPath
-        .attr("d", imdbLine)
-    
-    area
-        .x0((d, i) => { return scoreScale(d.imdb) })
-        .x1((d, i) => { return scoreScale(d.metascore) })
-
-    areaPath
-        .attr("d", area)
-
-    
-    }
-
-    
-
-resize()
-
-window.addEventListener("resize", function() {
-    resize()
-})
+//const resize = function() {
+//    const svgTag = document.querySelector("svg")
+//    const svgWidth = svgTag.clientWidth
+//
+//    scoreScale
+//        .range([420 / 960 * svgWidth, 900 / 960 * svgWidth])
+//
+//    groups
+//        .selectAll("circle.metascore")
+//        .attr("cx", (d, i) => { return scoreScale(d.metascore) })
+//    
+//    
+//    groups
+//        .selectAll("circle.imdb")
+//        .attr("cx", (d, i) => { return scoreScale(d.imdb) })
+//    
+//    groups
+//        .selectAll("text.title")
+//        .attr("x", (svgWidth >= 960) ? 90 : 70)
+//    
+//    metascoreLine
+//        .x((d, i) => { return scoreScale(d.metascore)})
+//    
+//    metascorePath
+//        .attr("d", metascoreLine)
+//
+//    imdbLine
+//        .x((d, i) => { return scoreScale(d.imdb)})
+//    
+//    imdbPath
+//        .attr("d", imdbLine)
+//    
+//    area
+//        .x0((d, i) => { return scoreScale(d.imdb) })
+//        .x1((d, i) => { return scoreScale(d.metascore) })
+//
+//    areaPath
+//        .attr("d", area)
+//
+//    
+//    }
+//resize()
+//
+//window.addEventListener("resize", function() {
+//    resize()
+//})
+//

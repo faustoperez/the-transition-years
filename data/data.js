@@ -20,11 +20,11 @@ let data = [
           "scenario": "act-Now"
         },
         {
-          "year": 2040,
+          "year": 2035,
           "source": "someLink",
           "default": false,
-          "title": "asdfe",
-          "cat": "eadsfjkewroiewhoiweroiqweradsfkhwerqe qewr dsfkjasdfew",
+          "title": "eadsfjkewroiew hoi weroi \n qwerad sfkhwerqe qewr \ndsfkjasdfew",
+          "cat": "saaadfe",
           "size": 2,
           "value": 0.98,
           "scenario": "act-Now"
