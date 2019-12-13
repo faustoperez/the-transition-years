@@ -14,6 +14,14 @@
         },
         {"events": "window:mouseout, window:touchend", "update": "{}"}
       ]
+    },
+    {
+      "name": "windowOut",
+      "value": "false",
+      "on": [
+        {"events": "view:mouseout, view:touchend", "update": "true"},
+        {"events": "view:mouseover, view:touchstart", "update": "false"}
+      ]
     }
   ],
   "data": [
@@ -49,16 +57,6 @@
           "default": null
         },
         {"type": "collect", "sort": {"field": "year"}}
-      ]
-    },
-    {
-      "name": "fiction_tooltip",
-      "source": "fiction",
-      "transform": [
-        {
-          "type": "filter",
-          "expr": "if(active!={}, datum.id == active.id, datum.default==true)"
-        }
       ]
     }
   ],
@@ -129,7 +127,7 @@
           "xfocus": {"scale": "xscale", "field": "value"},
           
           "stroke": {"scale": "colorC", "field": "cat"},
-          "strokeWidth": [{"test": "datum.default==true && !active.datum","value": 3}, {"value":0}],
+          "strokeWidth": [{"test": "datum.default==true && windowOut","value": 3}, {"value":0}],
           "zindex": {"value": 0}
         },
         "hover": {
@@ -169,7 +167,7 @@
           "strokeWidth": {"value": 1.5},
           "stroke": [
   {
-    "test": "datum.datum.default==true && !active.datum",
+    "test": "datum.datum.default==true && !active.datum && windowOut",
     "scale": "colorC", "signal": "datum.datum.cat"
   },
   {"value": "transparent"}
@@ -189,7 +187,7 @@
           "align": {"value": "left"},
           "baseline": {"value": "middle"},
           "lineBreak": {"value": "\n"},
-          "text": {"signal": "if(datum.datum.default==true && !active.datum,datum.datum.title,'')"},
+          "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut,datum.datum.title,'')"},
           "fill": {"value": "grey"}
         }
       }

@@ -104,6 +104,7 @@ h3 {
 
 header {
     margin-right: 40px;
+
     max-width: 600px;
 }
 
@@ -112,11 +113,14 @@ header img {
 }
 .flowElement {
     display: block;
+    margin-right: 40px;
+    max-width: 560px;
 }
 
 /* The sticky class is added to the header with JS when it reaches its scroll position */
 .sticky  {
     position: fixed;
+    display: block;
     
 }
 .fixEl {

@@ -161,12 +161,11 @@ function myFunction() {
     // Get the offset position of the navbar
     var sticky = header.offsetTop;
 
-  if (window.pageYOffset > sticky && window.pageYOffset < about) {
+  if (window.pageYOffset > sticky && window.pageYOffset < about && window.innerWidth > 1024) {
     //header.classList.remove("fixEl");
     header.classList.add("sticky");
-    header.style.display = "block";
   } 
-  else if(window.pageYOffset > about) {
+  else if(window.pageYOffset > about && window.innerWidth > 1024) {
     header.classList.remove("sticky");
     //header.classList.add("fixEl");
     header.style.position = "absolute";
