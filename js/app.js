@@ -157,17 +157,25 @@ function myFunction() {
     var sizeD = document.getElementById("view");
 
     var about = sizeD.offsetHeight + sizeD.offsetTop - header.offsetHeight - 50
-
+    console.log(about)
     // Get the offset position of the navbar
     var sticky = header.offsetTop;
-    console.log('window '+ window.pageYOffset)
-    console.log(sizeD.offsetHeight)
-    console.log(sizeD.offsetTop)
-    console.log('about ' + about)
+
   if (window.pageYOffset > sticky && window.pageYOffset < about) {
+    //header.classList.remove("fixEl");
     header.classList.add("sticky");
-  } else {
+    header.style.display = "block";
+  } 
+  else if(window.pageYOffset > about) {
     header.classList.remove("sticky");
+    //header.classList.add("fixEl");
+    header.style.position = "absolute";
+    header.style.top = about + 'px';
+  }
+  else {
+    header.classList.remove("sticky");
+    header.style.removeProperty('position')
+    header.style.removeProperty('top')
   }
 }   
 //const selectTag = document.querySelector("select")

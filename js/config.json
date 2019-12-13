@@ -1,7 +1,7 @@
 {
   "line": {"stroke": "#3e5c69"},
   "text": {"fill": "#333", "fontSize": 12},
-  "symbol": {"fillOpacity": 0.5},
+  "symbol": {"fillOpacity": 0.5, "strokeOpacity": 1},
   "axis": {
     "labelPadding": 2,
     "tickSize": 5,

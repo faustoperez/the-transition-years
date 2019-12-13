@@ -14,17 +14,6 @@
         },
         {"events": "window:mouseout, window:touchend", "update": "{}"}
       ]
-    },
-    {
-      "name": "indicator",
-      
-      "value": "temperature",
-      "bind": {
-        "input": "select",
-        "name": "indicator",
-        "element": "test",
-        "options": ["temperature", "co2-concentration", "co2-emissions"]
-      }
     }
   ],
   "data": [
@@ -33,7 +22,7 @@
       "url": "data/ccdata.json",
       "format": {"type": "json", "property": "data"},
       "transform": [
-        {"type": "filter", "expr": "datum.ind == indicator"},
+        {"type": "filter", "expr": "datum.ind == 'temperature'"},
         {"type": "filter", "expr": "datum.year < 2041"},
         {"type": "filter", "expr": "datum.scenario == 'act-Now'"},
         
@@ -110,13 +99,13 @@
       "scale": "xscale",
       "tickCount": 3,
       "title": {
-        "signal": "if(indicator=='temperature', ['Temperature change', 'ºC'], if(indicator=='co2-concentration',['Atmosferic CO2 concentration', 'in parts per million (ppm)'],['Global CO2 emissions', ' in Giga tons of CO2 per year']))"
+        "signal": "['Temperature change', 'ºC']"
       },
       "encode": {
         "labels": {
           "update": {
             "text": {
-              "signal": "if(datum.value, if(indicator=='temperature', '  +'+datum.label+' ºC', if(indicator=='co2-concentration', datum.label+' ppm',  datum.label+' GTons')),'')"
+              "signal": "if(datum.label,'  +'+datum.label+' ºC','')"
             }
           }
         }
@@ -139,12 +128,12 @@
           "yfocus": {"scale": "yscale", "field": "year"},
           "xfocus": {"scale": "xscale", "field": "value"},
           
-          "stroke": {"value": "black"},
-          "strokeWidth": {"value": 0},
+          "stroke": {"scale": "colorC", "field": "cat"},
+          "strokeWidth": [{"test": "datum.default==true && !active.datum","value": 3}, {"value":0}],
           "zindex": {"value": 0}
         },
         "hover": {
-          "stroke": {"value": "purple"},
+          "stroke": {"scale": "colorC", "field": "cat"},
           "strokeWidth": {"value": 3},
           "zindex": {"value": 1}
         }
@@ -157,12 +146,53 @@
           "restart":true,
           "alpha":0.6,
           "forces": [
-            {"force": "collide", "iterations": 1, "radius": 15},
+            {"force": "collide", "radius": 18},
             {"force": "x", "x": "xfocus", "strength": 0.4},
-            {"force": "y", "y": "yfocus", "strength": 0.2}
+            {"force": "y", "y": "yfocus", "strength": 0.2},
+            {
+      "force": "nbody",
+      "strength": -10
+    }
           ]
         }
       ]
+    },
+    {
+      "type": "rule",
+      "name": "line2",
+      "from": {"data": "nodes"},
+      "encode": {
+        "update": {
+          "x": {"signal": "datum.x","offset":10},
+          "y": {"signal": "datum.y"},
+          "x2": {"field": {"group": "width"},"offset":6},
+          "strokeWidth": {"value": 1.5},
+          "stroke": [
+  {
+    "test": "datum.datum.default==true && !active.datum",
+    "scale": "colorC", "signal": "datum.datum.cat"
+  },
+  {"value": "transparent"}
+]
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "titles2",
+      "interactive": false,
+      "from": {"data": "nodes"},
+      "encode": {
+        "update": {
+          "y": {"signal": "datum.y"},
+          "x": {"field": {"group": "width"}, "offset":10},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"},
+          "lineBreak": {"value": "\n"},
+          "text": {"signal": "if(datum.datum.default==true && !active.datum,datum.datum.title,'')"},
+          "fill": {"value": "grey"}
+        }
+      }
     },
     {
       "type": "rule",
@@ -170,14 +200,13 @@
       "encode": {
         "update": {
           "y": {"signal": "active.y"},
-          "fill": {"value": "red"},
-          "x": {"signal": "active.x+7"},
-          "x2": {"field": {"group": "width"}},
-          "strokeWidth": {"value": 1},
+          "x": {"signal": "active.x","offset":10},
+          "x2": {"field": {"group": "width"},"offset":6},
+          "strokeWidth": {"value": 1.5},
           "stroke": [
   {
     "test": "active.datum",
-    "value": "grey"
+    "scale": "colorC", "signal": "active.datum.cat"
   },
   {"value": "transparent"}
 ]
@@ -191,7 +220,7 @@
       "encode": {
         "update": {
           "y": {"signal": "active.y"},
-          "x": {"field": {"group": "width"}},
+          "x": {"field": {"group": "width"}, "offset":10},
           "align": {"value": "left"},
           "baseline": {"value": "middle"},
           "lineBreak": {"value": "\n"},
