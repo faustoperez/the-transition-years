@@ -1,92 +1,113 @@
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
+:root {
+    --background: linear-gradient(180deg, #F5F5F5 0%, #F5F5F5 69%, #FFFFFF 89%);
+    --text-color: #000000;
+    --text-color-gray: #9095A2;
+    --accent: #FFE400;
+    --quetzal: #2BA4A0;
+    --politics: #02AEED;
+    --energy: #7020FF;
+    --social: #2BA4A0;
+    --technology: #FFAA36;
+    --science: #F84B5A;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
-
-
-:root {
-    --background: #Ffffff;
-    --text-color: #111111;
-    --text-color-gray: #8a8a8a;
-    --accent: #0000FF;
-    --politics: #E993A6;
-    --energy: #F0CD2D;
-    --social: #EC4D42;
-    --technology: #4EA742;
-    --science: #4D95D6;
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 300;
+    font-display: fallback;
+    src: url("fonts/Inter-Light-BETA.woff2?v=3.11") format("woff2"),
+         url("fonts/Inter-Light-BETA.woff?v=3.11") format("woff");
+}
+  
+  @font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 600;
+    font-display: fallback;
+    src: url("fonts/Inter-SemiBold.woff2?v=3.11") format("woff2"),
+         url("fonts/Inter-SemiBold.woff?v=3.11") format("woff");
 }
 
 body {
-    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     line-height: 1.75;
-
-    background-color: var(--background);
+    font-weight: 300;
+    background-image: var(--background);
     color: var(--text-color);
-    margin: 100px 40px;
 }
 
-
 a {
+    display: inline-block;
+    color: var(--text-color);
+    background: var(--accent);
+    padding: 0 4px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
     text-decoration: underline;
-    color: var(--accent);
 }
 
 p {
     margin: 1rem 0;
 }
 
-main {
-    display: grid;
-    grid-template-columns: 500px 1fr;
+.container {
+    width: 90%;
+    max-width: 1060px;
+    margin: 0 auto;
 }
 
-h1, h2 {
-    font-family: 'Libre Baskerville', Georgia, serif;
+header h1 {
+    font-family: 'Baskerville', Georgia, serif;
+    font-size: 140px;
+    line-height: 0.75;
+    text-align: center;
+    margin-top: 148px;
 }
 
-h1 {
-    font-size: 48px;
-    line-height: 1;
+header h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    overflow: hidden;
+    margin: 96px 0 48px 0;
 }
 
-.legend span {
+header h2:before,
+header h2:after {
+    background-color: var(--text-color-gray);
+    opacity: 0.3;
+    content: "";
     display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    margin: 0 12px 0 0;
-    background-color: var(--accent);
-    
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+header h2:before {
+    right: 1em;
+    margin-left: -50%;
+}
+header h2:after {
+    left: 1em;
+    margin-right: -50%;
 }
 
-.legend span.politics {
-    background-color: var(--politics);
+header p {
+    font-size: 22px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
 }
 
-.legend span.energy {
-    background-color: var(--energy);
-}
-
-.legend span.technology {
-    background-color: var(--technology);
-}
-
-.legend span.science {
-    background-color: var(--science);
-}
-
-.legend span.social {
-    background-color: var(--social);
-}
-
-.legend li {
-    display: flex;
-    align-items: center;
-    margin: 4px 0 0 16px;
-    font-size: 14px;
+header p a {
+    color: var(--quetzal);
+    padding: 0;
+    background: none;
 }
 
 h2 {
@@ -94,87 +115,118 @@ h2 {
 }
 
 h3 {
-    margin-top: 36px;
-    margin-bottom: 12px;
-    max-width: 300px;
-    line-height: 1.5;
-    font-size: 12px;
-    color: var(--text-color-gray);
+    margin-top: 24px;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
 }
 
-header {
-    margin-right: 40px;
-
-    max-width: 600px;
+main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
-header img {
-    margin: 12px 0 0 8px;
-}
-.flowElement {
-    display: block;
-    margin-right: 40px;
-    max-width: 560px;
+.legend {
+    position: sticky;
+    top: 20px;
+    max-width: 250px;
+    border-top: 3px solid var(--text-color);
+    padding-bottom: 60px;
 }
 
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky  {
-    position: fixed;
-    display: block;
+.legend-bubbles {
+    margin-bottom: 60px;
+}
+
+.legend-bubbles span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin: 0 12px 0 0;
+    background-color: var(--accent);
     
 }
-.fixEl {
-    display: block;
-    position: absolute;
-    top: -1750;
-    left: 0;
+.legend-bubbles span.politics {
+    background-color: var(--politics);
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-/*.sticky + .content {
-  padding-top: 102px;
-}*/
+.legend-bubbles span.energy {
+    background-color: var(--energy);
+}
+
+.legend-bubbles span.technology {
+    background-color: var(--technology);
+}
+
+.legend-bubbles span.science {
+    background-color: var(--science);
+}
+
+.legend-bubbles span.social {
+    background-color: var(--social);
+}
+
+.legend-bubbles li {
+    display: flex;
+    align-items: center;
+    margin: 4px 0 0 16px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+footer {
+    background-color: var(--accent);
+    padding-bottom: 60px;
+}
+
+footer h2 {
+    font-family: 'Baskerville', Georgia, serif;
+    font-size: 80px;
+}
+
 .about {
-    max-width: 600px;
     margin-top: 60px;
+    padding-top: 60px;
+}
+
+.about p {
+    column-count: 2;
+    column-gap: 80px;
 }
 
 .references {
-    margin-top: 60px;
+    margin-top: 80px;
+
 }
 
 .references ol {
     list-style: decimal;
     font-size: 12px;
     margin-top: 1rem;
-    padding-inline-start: 40px;
-    column-count: 3;
-    column-gap: 120px;
+    column-count: 2;
+    column-gap: 80px;
+    
 }
 
 .references li {
-    margin: 1rem 0;
+    padding: 8px 0;
 }
 
-@media screen and (max-width: 1280px) {
-
-    .references ol {
-        column-count: 2;
-    }
+.references a:hover {
+    background-color: white;
 }
 
 @media screen and (max-width: 1024px) {
-    
-    body {
-        margin: 60px 24px; 
-    }
 
     main {
         display: block;
     }
 
-    .references ol {
-        padding-inline-start: 20px;
+    .references ol, .about p {
         column-count: 1;
         column-gap: 0;
     }
