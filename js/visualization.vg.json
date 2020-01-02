@@ -10,6 +10,7 @@
       "on": [
         {
           "events": "@nodes:mouseover, @nodes:touchstart",
+          "force":true,
           "update": " item()"
         },
         {"events": "window:mouseout, window:touchend", "update": "{}"}
@@ -55,6 +56,13 @@
           "values": ["value", "scenario"],
           "as": ["value", "scenario"],
           "default": null
+        },  
+        {
+          "type": "window",
+          "groupby":["year"],
+          "ops": ["max", "min"],
+          "fields": ["size","size"],
+          "as": ["max", "min"]
         },
         {"type": "collect", "sort": {"field": "year"}}
       ]
@@ -64,14 +72,14 @@
     {
       "name": "yscale",
       "type": "linear",
-      "domain": {"data": "table", "field": "year"},
+      "domain": [2019,2041],
       "range": "height",
       "reverse": true,
       "zero": false
     },
     {
       "name": "xscale",
-      "domain": {"data": "table", "field": "value"},
+      "domain": [0.5,1.1],
       "nice": true,
       "range": "width",
       "zero": false
@@ -83,15 +91,20 @@
       "domain": {"data": "fiction", "field": "cat"}
     },
     {
+      "name": "color",
+      "type": "sequential",
+      "range": {"scheme": "greys"}
+    },
+    {
       "name": "size",
       "type": "ordinal",
       "round": true,
-      "range": [300, 500, 800],
+      "range": "radius",
       "domain": {"data": "fiction", "field": "size"}
     }
   ],
   "axes": [
-    {"orient": "left", "scale": "yscale", "format": "f"},
+    {"orient": "left", "scale": "yscale", "format": "f", "tickCount": 16},
     {
       "orient": "top",
       "scale": "xscale",
@@ -104,13 +117,35 @@
           "update": {
             "text": {
               "signal": "if(datum.label,'  +'+datum.label+' ºC','')"
-            }
+            },
+            "dx":{"offset":10}
           }
         }
       }
     }
   ],
   "marks": [
+    {
+      "type": "group",
+      "from": {
+        "facet": {"name": "series", "data": "table", "groupby": "scenario"}
+      },
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "series"},
+          "encode": {
+            "enter": {
+              "zindex": {"value": 2},
+              "x": {"scale": "xscale", "field": "value"},
+              "y": {"scale": "yscale", "field": "year"},
+              "strokeWidth": {"value": 3},
+              "stroke": {"signal": "gradient('color', [0,0], [0.1,0.1])"}
+            }
+          }
+        }
+      ]
+    },
     {
       "name": "nodes",
       "type": "symbol",
@@ -125,13 +160,12 @@
         "update": {
           "yfocus": {"scale": "yscale", "field": "year"},
           "xfocus": {"scale": "xscale", "field": "value"},
-          
-          "stroke": {"scale": "colorC", "field": "cat"},
+          "stroke": {"value": "#000"},
           "strokeWidth": [{"test": "datum.default==true && windowOut","value": 3}, {"value":0}],
           "zindex": {"value": 0}
         },
         "hover": {
-          "stroke": {"scale": "colorC", "field": "cat"},
+          "stroke": {"value": "#000"},
           "strokeWidth": {"value": 3},
           "zindex": {"value": 1}
         }
@@ -139,17 +173,19 @@
       "transform": [
         {
           "type": "force",
-          "iterations": 500,
+          "iterations": 100,
           "static": false,
-          "restart":true,
-          "alpha":0.6,
+          "restart":false,
+          "alpha":1,
+          "velocityDecay":0.01,
           "forces": [
-            {"force": "collide", "radius": 18},
-            {"force": "x", "x": "xfocus", "strength": 0.4},
-            {"force": "y", "y": "yfocus", "strength": 0.2},
+            {"force": "collide","iterations":1, "radius": {"expr": "clamp((((datum.datum.max)/3) * 32),11,28)"}, "strength":0.1},
+            {"force": "x", "x": "xfocus", "strength": 0.3},
+            {"force": "y", "y": "yfocus", "strength": 0.3},
+
             {
       "force": "nbody",
-      "strength": -10
+      "strength": -5
     }
           ]
         }
@@ -161,14 +197,14 @@
       "from": {"data": "nodes"},
       "encode": {
         "update": {
-          "x": {"signal": "datum.x","offset":10},
+          "x": {"signal": "datum.x","offset":{"signal": "datum.size/100"}},
           "y": {"signal": "datum.y"},
           "x2": {"field": {"group": "width"},"offset":6},
           "strokeWidth": {"value": 1.5},
           "stroke": [
   {
     "test": "datum.datum.default==true && !active.datum && windowOut",
-    "scale": "colorC", "signal": "datum.datum.cat"
+    "value": "#000"
   },
   {"value": "transparent"}
 ]
@@ -198,13 +234,13 @@
       "encode": {
         "update": {
           "y": {"signal": "active.y"},
-          "x": {"signal": "active.x","offset":10},
+          "x": {"signal": "active.x","offset": {"signal": "active.size/100.5"}},
           "x2": {"field": {"group": "width"},"offset":6},
           "strokeWidth": {"value": 1.5},
           "stroke": [
   {
     "test": "active.datum",
-    "scale": "colorC", "signal": "active.datum.cat"
+    "value": "#000"
   },
   {"value": "transparent"}
 ]
@@ -218,7 +254,7 @@
       "encode": {
         "update": {
           "y": {"signal": "active.y"},
-          "x": {"field": {"group": "width"}, "offset":10},
+          "x": {"field": {"group": "width"}, "offset":20},
           "align": {"value": "left"},
           "baseline": {"value": "middle"},
           "lineBreak": {"value": "\n"},
@@ -226,26 +262,6 @@
           "fill": {"value": "grey"}
         }
       }
-    },
-    {
-      "type": "group",
-      "from": {
-        "facet": {"name": "series", "data": "table", "groupby": "scenario"}
-      },
-      "marks": [
-        {
-          "type": "line",
-          "from": {"data": "series"},
-          "encode": {
-            "enter": {
-              "zindex": {"value": 2},
-              "x": {"scale": "xscale", "field": "value"},
-              "y": {"scale": "yscale", "field": "year"},
-              "strokeWidth": {"value": 3}
-            }
-          }
-        }
-      ]
     }
   ]
 }
