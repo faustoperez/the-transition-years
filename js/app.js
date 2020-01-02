@@ -146,7 +146,7 @@ groups
     })
 
 // When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
+//window.onscroll = function() {myFunction()};
 
 
 
@@ -178,7 +178,7 @@ function myFunction() {
   }
 }   
 //const selectTag = document.querySelector("select")
-//console.log(document)
+//console.log(selectTag)
 //selectTag.addEventListener("change", function() {
 //    data.sort((a, b) => {
 //         if (this.value == "imdb") {
