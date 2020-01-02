@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="115px" height="58px" viewBox="0 0 115 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
-    <title>Group</title>
+<svg width="167px" height="72px" viewBox="0 0 167 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>Group 2</title>
     <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Desktop-HD-Copy" transform="translate(-79.000000, -632.000000)">
-            <g id="Group" transform="translate(79.000000, 629.000000)">
-                <text id="Large" font-family="Inter-Regular, Inter" font-size="12" font-weight="normal" line-spacing="15" fill="#191919">
-                    <tspan x="70" y="12">Large</tspan>
+    <g id="Ari" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Vis_03-Copy-2" transform="translate(-108.000000, -1061.000000)">
+            <g id="Group-2" transform="translate(110.000000, 1058.000000)">
+                <text id="Large" font-family="Inter-SemiBold, Inter" font-size="14" font-weight="500" fill="#000000">
+                    <tspan x="111" y="14">Large</tspan>
                 </text>
-                <text id="Small" font-family="Inter-Regular, Inter" font-size="12" font-weight="normal" line-spacing="15" fill="#191919">
-                    <tspan x="70" y="52">Small</tspan>
+                <text id="Small" font-family="Inter-SemiBold, Inter" font-size="14" font-weight="500" fill="#000000">
+                    <tspan x="111" y="55">Small</tspan>
                 </text>
-                <text id="Medium" font-family="Inter-Regular, Inter" font-size="12" font-weight="normal" line-spacing="15" fill="#191919">
-                    <tspan x="70" y="32">Medium</tspan>
+                <text id="Medium" font-family="Inter-SemiBold, Inter" font-size="14" font-weight="500" fill="#000000">
+                    <tspan x="111" y="35">Medium</tspan>
                 </text>
-                <g id="bubble-chart-legend" transform="translate(0.000000, 7.000000)" fill-rule="nonzero" stroke="#595B5D">
-                    <polyline id="Path-2" points="25 45 27.9547124 40 59 40"></polyline>
-                    <polyline id="Path-2" points="25 25 27.9547124 20 59 20"></polyline>
-                    <polyline id="Path-2" points="25 5 27.9547124 0 59 0"></polyline>
-                    <circle id="Oval" fill-opacity="0.198945586" fill="#191919" cx="25" cy="29" r="24.5"></circle>
-                    <circle id="Oval-Copy-41" fill-opacity="0.198945586" fill="#191919" cx="25" cy="39" r="14.5"></circle>
-                    <circle id="Oval" fill-opacity="0.198945586" fill="#191919" cx="25" cy="49" r="4.5"></circle>
+                <g id="bubble-chart-legend" transform="translate(0.000000, 23.000000)" fill-rule="nonzero" stroke="#9095A2" stroke-width="2">
+                    <circle id="Oval" cx="25" cy="25" r="26"></circle>
+                    <circle id="Oval-Copy-41" cx="25" cy="35" r="16"></circle>
+                    <circle id="Oval" cx="25" cy="45" r="6"></circle>
                 </g>
+                <path d="M25,22.0117187 L37.9547124,9 L99.5,9" id="Path-2" stroke="#9095A2" stroke-dasharray="4,3" fill-rule="nonzero"></path>
+                <path d="M25,43.0117187 L37.9547124,30 L99.5,30" id="Path-2" stroke="#9095A2" stroke-dasharray="4,3" fill-rule="nonzero"></path>
+                <path d="M25,63.0117187 L37.9547124,50 L99.5,50" id="Path-2" stroke="#9095A2" stroke-dasharray="4,3" fill-rule="nonzero"></path>
             </g>
         </g>
     </g>
