@@ -63,6 +63,15 @@
         {"type": "formula", "as": "count", "expr": "length(split(datum.title))"},
         {"type": "collect", "sort": {"field": "year"}}
       ]
+    },
+    {"name": "backNormal",
+      "values": [
+        {
+          "year": 2012034,
+          "source": "someLink",
+          "title": "end of heatwave"
+        }
+      ]
     }
   ],
   "scales": [
@@ -73,6 +82,14 @@
       "range": "height",
       "reverse": true,
       "zero": false
+    },
+    {
+      "name": "y2",
+      "type": "point",
+      "domain": {"data": "backNormal", "field": "year"},
+      "range": [0,50],
+       "round": true,
+      "align":0.5
     },
     {
       "name": "xscale",
@@ -121,174 +138,259 @@
       }
     }
   ],
+  "layout": {
+    "padding": 10,
+    "offset": 20,
+    "bounds": "full",
+    "align": "all",
+    "columns":1
+  },
   "marks": [
     {
       "type": "group",
-      "from": {
-        "facet": {"name": "series", "data": "table", "groupby": "scenario"}
+      "name": "concat_1_group",
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "width"},
+          "height": {"signal": "height"},
+          "strokeOpacity": {"value": 0}
+        }
       },
+
       "marks": [
         {
-          "type": "line",
-          "from": {"data": "series"},
+          "type": "group",
+          "from": {
+            "facet": {"name": "series", "data": "table", "groupby": "scenario"}
+          },
+          "marks": [
+            {
+              "type": "line",
+              "from": {"data": "series"},
+              "encode": {
+                "enter": {
+                  "zindex": {"value": 2},
+                  "x": {"scale": "xscale", "field": "value"},
+                  "y": {"scale": "yscale", "field": "year"},
+                  "strokeWidth": {"value": 3},
+                  "stroke": {"signal": "gradient('color', [0,0], [0.1,0.1])"}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "nodes",
+          "type": "symbol",
+          "from": {"data": "fiction"},
           "encode": {
             "enter": {
-              "zindex": {"value": 2},
-              "x": {"scale": "xscale", "field": "value"},
-              "y": {"scale": "yscale", "field": "year"},
+              "fill": {"scale": "colorC", "field": "cat"},
+              "size": {"scale": "size", "field": "size"},
+              "zindex": {"value": 0}
+
+            },
+            "update": {
+              "yfocus": {"scale": "yscale", "field": "year"},
+              "xfocus": {"scale": "xscale", "field": "value"},
+              "stroke": {"value": "#000"},
+              "strokeWidth": [{"test": "datum.default==true && windowOut","value": 3}, {"value":0}],
+              "zindex": {"value": 0}
+            },
+            "hover": {
+              "stroke": {"value": "#000"},
               "strokeWidth": {"value": 3},
-              "stroke": {"signal": "gradient('color', [0,0], [0.1,0.1])"}
+              "zindex": {"value": 1}
+            }
+          },
+          "transform": [
+            {
+              "type": "force",
+              "iterations": 100,
+              "static": false,
+              "restart":false,
+              "alpha":1,
+              "velocityDecay":0.01,
+              "forces": [
+                {"force": "collide","iterations":1, "radius": {"expr": "clamp((((datum.datum.max)/3) * 32),11,28)"}, "strength":0.1},
+                {"force": "x", "x": "xfocus", "strength": 0.3},
+                {"force": "y", "y": "yfocus", "strength": 0.3},
+
+                {
+          "force": "nbody",
+          "strength": -5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rule",
+          "name": "line2",
+          "from": {"data": "nodes"},
+          "encode": {
+            "update": {
+              "x": {"signal": "datum.x","offset":{"signal": "clamp((datum.size/100),10,30)"}},
+              "y": {"signal": "datum.y"},
+              "x2": {"field": {"group": "width"},"offset":6},
+              "strokeWidth": {"value": 1.5},
+              "stroke": [
+                {
+                  "test": "datum.datum.default==true && !active.datum && windowOut",
+                  "value": "#000"
+                },
+                {"value": "transparent"}
+              ]
+            }
+          }
+        },
+        {
+          "type": "text",
+          "name": "body2",
+          "interactive": false,
+          "from": {"data": "nodes"},
+          "encode": {
+            "update": {
+              "y": {"signal": "datum.y"},
+              "x": {"field": {"group": "width"}, "offset":20},
+              "align": {"value": "left"},
+              "baseline": {"value": "middle"},
+              "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut,datum.datum.title,'')"}
+            }
+          }
+        },
+        {
+          "type": "text",
+          "name": "titles2",
+          "interactive": false,
+          "from": {"data": "nodes"},
+          "encode": {
+            "update": {
+              "y": {"signal": "datum.y", "offset":-20},
+              "x": {"field": {"group": "width"}, "offset":20},
+              "fontWeight":{"value": "bold"},
+              "align": {"value": "left"},
+              "baseline": {"value": "top"},
+              "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
+              "fill": {"value": "#000"}
+            }
+          }
+        },
+        {
+          "type": "rule",
+          "name": "line",
+          "encode": {
+            "update": {
+              "y": {"signal": "active.y"},
+              "x": {"signal": "active.x","offset": {"signal": "clamp((active.size/100),10,30)"}},
+              "x2": {"field": {"group": "width"},"offset":6},
+              "strokeWidth": {"value": 1.5},
+              "stroke": [
+                {
+                  "test": "active.datum",
+                  "value": "#000"
+                },
+                {"value": "transparent"}
+              ]
+            }
+          }
+        },
+        {
+          "type": "text",
+          "name": "body",
+          "interactive": false,
+          "encode": {
+            "update": {
+              "y": {"signal": "active.y"},
+              "x": {"field": {"group": "width"}, "offset":20},
+              "align": {"value": "left"},
+              "baseline": {"value": "middle"},
+              "lineBreak": {"value": "\n"},
+              "text": {"signal": "if(active.datum,active.datum.title,'')"}
+            }
+          }
+        },
+        {
+          "type": "text",
+          "name": "titles",
+          "interactive": false,
+          "encode": {
+            "update": {
+              "y": {"signal": "active.y", "offset":-20},
+              "x": {"field": {"group": "width"}, "offset":20},
+              "fontWeight":{"value": "bold"},
+              "align": {"value": "left"},
+              "baseline": {"value": "top"},
+              "text": {"signal": "if(active.datum,active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
+              "fill": {"value": "#000"}
             }
           }
         }
       ]
     },
     {
-      "name": "nodes",
-      "type": "symbol",
-      "from": {"data": "fiction"},
+      "type": "group",
+      "name": "concat_2_group",
+      "style": "cell",
       "encode": {
-        "enter": {
-          "fill": {"scale": "colorC", "field": "cat"},
-          "size": {"scale": "size", "field": "size"},
-          "zindex": {"value": 0}
-
-        },
         "update": {
-          "yfocus": {"scale": "yscale", "field": "year"},
-          "xfocus": {"scale": "xscale", "field": "value"},
-          "stroke": {"value": "#000"},
-          "strokeWidth": [{"test": "datum.default==true && windowOut","value": 3}, {"value":0}],
-          "zindex": {"value": 0}
-        },
-        "hover": {
-          "stroke": {"value": "#000"},
-          "strokeWidth": {"value": 3},
-          "zindex": {"value": 1}
+          "width": {"signal": "width"},
+          "height": {"signal": "50"},
+          "strokeOpacity": {"value": 0}
         }
       },
-      "transform": [
+      "axes": [
+    {"orient": "left", "scale": "y2", "format": ".0f", "tickCount": 1, "bandPosition":1}],
+      "marks": [
         {
-          "type": "force",
-          "iterations": 100,
-          "static": false,
-          "restart":false,
-          "alpha":1,
-          "velocityDecay":0.01,
-          "forces": [
-            {"force": "collide","iterations":1, "radius": {"expr": "clamp((((datum.datum.max)/3) * 32),11,28)"}, "strength":0.1},
-            {"force": "x", "x": "xfocus", "strength": 0.3},
-            {"force": "y", "y": "yfocus", "strength": 0.3},
-
-            {
-      "force": "nbody",
-      "strength": -5
-    }
-          ]
+          "type": "rule",
+          "name": "line-b2",
+          "from": {"data": "backNormal"},
+          "encode": {
+            "update": {
+              "x": {"value": 0.51, "scale":"xscale"},
+              "y": {"field": "year", "scale":"y2"},
+              "x2": {"field": {"group": "width"},"offset":6},
+              "strokeWidth": {"value": 1.5},
+              "stroke":{"value": "#000"}
+            
+            }
+          }
+        },
+        {
+          "type": "text",
+          "name": "body-b2",
+          "interactive": false,
+          "from": {"data": "backNormal"},
+          "encode": {
+            "update": {
+              "y": {"field": "year", "scale":"y2"},
+              "x": {"field": {"group": "width"}, "offset":20},
+              "align": {"value": "left"},
+              "baseline": {"value": "middle"},
+              "text": {"signal": "datum.title"}
+            }
+          }
+        },
+        {
+          "type": "text",
+          "name": "titles-b2",
+          "interactive": false,
+          "from": {"data": "backNormal"},
+          "encode": {
+            "update": {
+              "y": {"field": "year", "scale":"y2", "offset":-20},
+              "x": {"field": {"group": "width"}, "offset":20},
+              "fontWeight":{"value": "bold"},
+              "align": {"value": "left"},
+              "baseline": {"value": "top"},
+              "text": {"signal": "datum.year + ' / + 0 ºC'"},
+              "fill": {"value": "#000"}
+            }
+          }
         }
-      ]
-    },
-    {
-      "type": "rule",
-      "name": "line2",
-      "from": {"data": "nodes"},
-      "encode": {
-        "update": {
-          "x": {"signal": "datum.x","offset":{"signal": "clamp((datum.size/100),10,30)"}},
-          "y": {"signal": "datum.y"},
-          "x2": {"field": {"group": "width"},"offset":6},
-          "strokeWidth": {"value": 1.5},
-          "stroke": [
-  {
-    "test": "datum.datum.default==true && !active.datum && windowOut",
-    "value": "#000"
-  },
-  {"value": "transparent"}
-]
-        }
-      }
-    },
-    {
-      "type": "text",
-      "name": "body2",
-      "interactive": false,
-      "from": {"data": "nodes"},
-      "encode": {
-        "update": {
-          "y": {"signal": "datum.y"},
-          "x": {"field": {"group": "width"}, "offset":20},
-          "align": {"value": "left"},
-          "baseline": {"value": "middle"},
-          "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut,datum.datum.title,'')"}
-        }
-      }
-    },
-    {
-      "type": "text",
-      "name": "titles2",
-      "interactive": false,
-      "from": {"data": "nodes"},
-      "encode": {
-        "update": {
-          "y": {"signal": "datum.y", "offset":-20},
-          "x": {"field": {"group": "width"}, "offset":20},
-          "fontWeight":{"value": "bold"},
-          "align": {"value": "left"},
-          "baseline": {"value": "top"},
-          "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
-          "fill": {"value": "#000"}
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "name": "line",
-      "encode": {
-        "update": {
-          "y": {"signal": "active.y"},
-          "x": {"signal": "active.x","offset": {"signal": "clamp((active.size/100),10,30)"}},
-          "x2": {"field": {"group": "width"},"offset":6},
-          "strokeWidth": {"value": 1.5},
-          "stroke": [
-            {
-              "test": "active.datum",
-              "value": "#000"
-            },
-            {"value": "transparent"}
-          ]
-        }
-      }
-    },
-    {
-      "type": "text",
-      "name": "body",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "y": {"signal": "active.y"},
-          "x": {"field": {"group": "width"}, "offset":20},
-          "align": {"value": "left"},
-          "baseline": {"value": "middle"},
-          "lineBreak": {"value": "\n"},
-          "text": {"signal": "if(active.datum,active.datum.title,'')"}
-        }
-      }
-    },
-    {
-      "type": "text",
-      "name": "titles",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "y": {"signal": "active.y", "offset":-20},
-          "x": {"field": {"group": "width"}, "offset":20},
-          "fontWeight":{"value": "bold"},
-          "align": {"value": "left"},
-          "baseline": {"value": "top"},
-          "text": {"signal": "if(active.datum,active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
-          "fill": {"value": "#000"}
-        }
-      }
+      ]      
     }
   ]
 }
