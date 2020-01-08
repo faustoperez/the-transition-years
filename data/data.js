@@ -24,7 +24,7 @@ let data = [
           "source": "someLink",
           "default": true,
           "title": "eadsfjkewroiew hoi weroi  qwerad sfkhwerqe qewr dsfkjasdfew",
-          "cat": "saaadfe",
+          "cat": "e",
           "size": 2,
           "value": 0.98,
           "scenario": "act-Now"
@@ -274,7 +274,7 @@ let data = [
           "source": "someLink",
           "default": false,
           "title": "co2-concentration",
-          "cat": "f",
+          "cat": "b",
           "size": 1,
           "value": 0.657,
           "scenario": "act-Now"
@@ -354,7 +354,7 @@ let data = [
           "source": "someLink",
           "default": false,
           "title": "co2-concentration",
-          "cat": "f",
+          "cat": "c",
           "size": 1,
           "value": 0.822,
           "scenario": "act-Now"

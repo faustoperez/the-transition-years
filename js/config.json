@@ -38,22 +38,18 @@
   "legend": {"labelFontSize": 11, "padding": 1, "symbolType": "circle"},
   "range": {
     "category": [
-      "#02aeed",
-      "#299d99",
-      "#7020ff",
-      "#ffaa36",
-      "#3690c0",
-      "#74a9cf",
-      "#a6bddb",
-      "#e2ddf2"
+      "#02AEED",
+      "#7020FF",
+      "#2BA4A0",
+      "#FFAA36",
+      "#F84B5A"
     ],
     "ordinal": [
-      "#02aeed",
-      "#299d99",
-      "#7020ff",
-      "#ffaa36",
-      "#f84b5a",
-      "#e2ddf2"
+      "#02AEED",
+      "#7020FF",
+      "#2BA4A0",
+      "#FFAA36",
+      "#F84B5A"
     ],
     "radius":[500, 2000, 3000]
   }
