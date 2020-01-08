@@ -6,10 +6,17 @@ var opt = {
   height: 2000,
   actions: false,
   config: "js/config.json",
+  tooltip: {theme: 'dark'}
 }
+const newData = data.map(function(d) {
+    return Object.assign(d, { title: d.title.match(/(([\w]+(?:[\W\n|\W\.|\W\,]+[\w\n|\w\.|\w\,]+){0,2})+)/g) });
+});
 vegaEmbed('#view',spec, opt).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  result.view.insert('fiction',data).runAsync();
+  result.view.insert('fiction',newData).runAsync();
+  //result.view.addSignalListener('tooltip', function(name, value) {
+  //      console.log('WIDTH: ' + value);
+  //      })
   }).catch(console.error);
 
 //

@@ -22,8 +22,8 @@ let data = [
         {
           "year": 2035,
           "source": "someLink",
-          "default": false,
-          "title": "eadsfjkewroiew hoi weroi \n qwerad sfkhwerqe qewr \ndsfkjasdfew",
+          "default": true,
+          "title": "eadsfjkewroiew hoi weroi  qwerad sfkhwerqe qewr dsfkjasdfew",
           "cat": "saaadfe",
           "size": 2,
           "value": 0.98,

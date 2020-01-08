@@ -14,7 +14,10 @@
     "gridColor": "#d6d8dc",
     "tickColor":"#d6d8dc",
     "labelFont":"Inter",
-    "titleFont":"Inter"
+    "labelFontSize":12,
+    "titleFont":"Inter",
+    "titleFontSize":14,
+    "titleFontWeight": "bold"
   },
   "axisX": {
     "grid": true,
@@ -28,9 +31,8 @@
     "labelPadding": 10,
     "labelColor":"#000",
     "labelFontWeight":"bold",
-    "titlePadding": 10,
-    "titleFontWeight": "bold",
-    "titleFontSize": 14
+    "titlePadding": 10
+    
   },
   "axisY": {"ticks": true, "labelPadding": 10, "tickOffset": 0, "tickExtra":false, "labelFontWeight":"normal"},
   "legend": {"labelFontSize": 11, "padding": 1, "symbolType": "circle"},

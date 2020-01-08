@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "todo",
-  "padding": {"left": 40, "top": 40, "right": 120, "bottom": 50},
+  "padding": {"left": 40, "top": 40, "right": 150, "bottom": 50},
   "autosize": {"type": "pad", "contains": "padding", "resize": false},
   "signals": [
     {
@@ -39,11 +39,6 @@
       ]
     },
     {
-      "name": "table_1",
-      "source": "table",
-      "transform": [{"type": "extent", "field": "year", "signal": "xextent"}]
-    },
-    {
       "name": "fiction",
       "values": [
       ],
@@ -64,6 +59,8 @@
           "fields": ["size","size"],
           "as": ["max", "min"]
         },
+        {"type": "formula", "as": "length", "expr": "length(datum.title)"},
+        {"type": "formula", "as": "count", "expr": "length(split(datum.title))"},
         {"type": "collect", "sort": {"field": "year"}}
       ]
     }
@@ -197,7 +194,7 @@
       "from": {"data": "nodes"},
       "encode": {
         "update": {
-          "x": {"signal": "datum.x","offset":{"signal": "datum.size/100"}},
+          "x": {"signal": "datum.x","offset":{"signal": "clamp((datum.size/100),10,30)"}},
           "y": {"signal": "datum.y"},
           "x2": {"field": {"group": "width"},"offset":6},
           "strokeWidth": {"value": 1.5},
@@ -213,18 +210,33 @@
     },
     {
       "type": "text",
-      "name": "titles2",
+      "name": "body2",
       "interactive": false,
       "from": {"data": "nodes"},
       "encode": {
         "update": {
           "y": {"signal": "datum.y"},
-          "x": {"field": {"group": "width"}, "offset":10},
+          "x": {"field": {"group": "width"}, "offset":20},
           "align": {"value": "left"},
           "baseline": {"value": "middle"},
-          "lineBreak": {"value": "\n"},
-          "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut,datum.datum.title,'')"},
-          "fill": {"value": "grey"}
+          "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut,datum.datum.title,'')"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "titles2",
+      "interactive": false,
+      "from": {"data": "nodes"},
+      "encode": {
+        "update": {
+          "y": {"signal": "datum.y", "offset":-20},
+          "x": {"field": {"group": "width"}, "offset":20},
+          "fontWeight":{"value": "bold"},
+          "align": {"value": "left"},
+          "baseline": {"value": "top"},
+          "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
+          "fill": {"value": "#000"}
         }
       }
     },
@@ -234,16 +246,31 @@
       "encode": {
         "update": {
           "y": {"signal": "active.y"},
-          "x": {"signal": "active.x","offset": {"signal": "active.size/100.5"}},
+          "x": {"signal": "active.x","offset": {"signal": "clamp((active.size/100),10,30)"}},
           "x2": {"field": {"group": "width"},"offset":6},
           "strokeWidth": {"value": 1.5},
           "stroke": [
-  {
-    "test": "active.datum",
-    "value": "#000"
-  },
-  {"value": "transparent"}
-]
+            {
+              "test": "active.datum",
+              "value": "#000"
+            },
+            {"value": "transparent"}
+          ]
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "body",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "y": {"signal": "active.y"},
+          "x": {"field": {"group": "width"}, "offset":20},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"},
+          "lineBreak": {"value": "\n"},
+          "text": {"signal": "if(active.datum,active.datum.title,'')"}
         }
       }
     },
@@ -253,13 +280,13 @@
       "interactive": false,
       "encode": {
         "update": {
-          "y": {"signal": "active.y"},
+          "y": {"signal": "active.y", "offset":-20},
           "x": {"field": {"group": "width"}, "offset":20},
+          "fontWeight":{"value": "bold"},
           "align": {"value": "left"},
-          "baseline": {"value": "middle"},
-          "lineBreak": {"value": "\n"},
-          "text": {"signal": "if(active.datum,active.datum.title,'')"},
-          "fill": {"value": "grey"}
+          "baseline": {"value": "top"},
+          "text": {"signal": "if(active.datum,active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
+          "fill": {"value": "#000"}
         }
       }
     }
