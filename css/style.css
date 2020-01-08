@@ -186,6 +186,7 @@ main {
 
 #view {
     border-top: 3px solid var(--text-color);
+    margin-left: 5%;
 }
 
 footer {
@@ -279,6 +280,18 @@ footer h2 {
 
     .legend {
         position: relative;
+        max-width: 100%;
+        width: 100%;
+        display: flex;
+        padding: 30px 0;
+    }
+
+    .legend div {
+        width: 45%;
+    }
+
+    #view {
+        margin-left: 0
     }
 
 }
@@ -304,6 +317,15 @@ footer h2 {
 
     .subfooter {
         flex-direction: column;
+    }
+
+    .legend {
+        display: block;
+        padding: 30px 0 60px 0;
+    }
+
+    .legend div {
+        width: 100%;
     }
 
 }
