@@ -16,7 +16,7 @@
     "labelFont":"Inter",
     "labelFontSize":12,
     "titleFont":"Inter",
-    "titleFontSize":14,
+    "titleFontSize":18,
     "titleFontWeight": "bold"
   },
   "axisX": {

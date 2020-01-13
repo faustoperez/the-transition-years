@@ -2,7 +2,7 @@ let spec = "js/visualization.vg.json"
 var opt = {
   defaultStyle: false,
   renderer:"svg",
-  width: 400,
+  width: 600,
   height: 2000,
   actions: false,
   config: "js/config.json",

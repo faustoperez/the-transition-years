@@ -1,9 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "todo",
-  "padding": {"left": 40, "top": 40, "right": 150, "bottom": 50},
-  "autosize": {"type": "pad", "contains": "padding", "resize": false},
+  "padding": {"left": 0, "top": 25, "right": 0, "bottom": 0},
+  "autosize": {"type": "fit", "contains": "content", "resize": true},
   "signals": [
+    {
+      "name": "width",
+      "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+      "on": [
+        {
+          "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+          "events": "window:resize"
+        }
+      ]
+    },
     {
       "name": "active",
       "value": {},
