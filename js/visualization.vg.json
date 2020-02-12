@@ -175,6 +175,7 @@
                   "zindex": {"value": 2},
                   "x": {"scale": "xscale", "field": "value"},
                   "y": {"scale": "yscale", "field": "year"},
+                  "stroke": {"signal": "gradient('color', [0,0], [0.1,0.1])"},
                   "strokeWidth": {"value": 3}
                 }
               }
