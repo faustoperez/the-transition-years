@@ -1,20 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "todo",
-  "padding": {"left": 0, "top": 25, "right": 0, "bottom": 0},
-  "autosize": {"type": "fit", "contains": "content", "resize": true},
+  "padding": {"left": 5, "top": 25, "right": 400, "bottom": 0},
+  "autosize": {"type": "fit", "contains": "content", "resize": false},
   "signals": [
-    {
-      "name": "width",
-      "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
-      "on": [
-        {
-          "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
-          "events": "window:resize"
-        }
-      ]
-    },
-    {
+      {
       "name": "active",
       "value": {},
       "on": [
@@ -71,16 +61,15 @@
         },
         {"type": "formula", "as": "length", "expr": "length(datum.title)"},
         {"type": "formula", "as": "count", "expr": "length(split(datum.title))"},
+        {"type": "filter", "expr": "datum.year < 400000000"},
         {"type": "collect", "sort": {"field": "year"}}
       ]
     },
-    {"name": "backNormal",
+    {"name": "backNormal", 
       "values": [
-        {
-          "year": 2012034,
-          "source": "someLink",
-          "title": ["Back to normal CO2","levels pre-industrialization"]
-        }
+      ],
+      "transform": [
+        {"type": "filter", "expr": "datum.year == 400000000"}
       ]
     }
   ],
