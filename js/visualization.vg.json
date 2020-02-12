@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "todo",
-  "padding": {"left": 5, "top": 25, "right": 400, "bottom": 0},
+  "padding": {"left": 0, "top": 0, "right": 0, "bottom": 0},
   "autosize": {"type": "fit", "contains": "content", "resize": false},
   "signals": [
-      {
+    {
       "name": "active",
       "value": {},
       "on": [
@@ -43,6 +43,7 @@
       "values": [
       ],
       "transform": [
+        {"type": "filter", "expr": "datum.year < 400000000"},
         {
           "type": "lookup",
           "from": "table",
@@ -61,12 +62,12 @@
         },
         {"type": "formula", "as": "length", "expr": "length(datum.title)"},
         {"type": "formula", "as": "count", "expr": "length(split(datum.title))"},
-        {"type": "filter", "expr": "datum.year < 400000000"},
         {"type": "collect", "sort": {"field": "year"}}
       ]
     },
-    {"name": "backNormal", 
+    {"name": "backNormal",
       "values": [
+        
       ],
       "transform": [
         {"type": "filter", "expr": "datum.year == 400000000"}
@@ -92,6 +93,7 @@
     },
     {
       "name": "xscale",
+      "type": "linear",
       "domain": [0.5,1.1],
       "nice": true,
       "range": "width",
@@ -123,7 +125,7 @@
       "scale": "xscale",
       "tickCount": 3,
       "title": {
-        "signal": "['Temperature change', 'ºC']"
+        "signal": "['Temperature change ºC']"
       },
       "encode": {
         "labels": {
@@ -131,15 +133,16 @@
             "text": {
               "signal": "if(datum.label,'  +'+datum.label+' ºC','')"
             },
-            "dx":{"offset":10}
+            "dx":{"offset":10},
+            "dy":{"offset":-10}
           }
         }
       }
     }
   ],
   "layout": {
-    "padding": 10,
-    "offset": 20,
+    "padding": 100,
+    "offset": 0,
     "bounds": "full",
     "align": "all",
     "columns":1
@@ -172,8 +175,7 @@
                   "zindex": {"value": 2},
                   "x": {"scale": "xscale", "field": "value"},
                   "y": {"scale": "yscale", "field": "year"},
-                  "strokeWidth": {"value": 3},
-                  "stroke": {"signal": "gradient('color', [0,0], [0.1,0.1])"}
+                  "strokeWidth": {"value": 3}
                 }
               }
             }
@@ -187,6 +189,7 @@
             "enter": {
               "fill": {"scale": "colorC", "field": "cat"},
               "size": {"scale": "size", "field": "size"},
+              "shape": [{"test": "datum.cat=='Milestone'","value": "diamond"}],
               "zindex": {"value": 0}
 
             },
@@ -212,7 +215,7 @@
               "alpha":1,
               "velocityDecay":0.01,
               "forces": [
-                {"force": "collide","iterations":1, "radius": {"expr": "clamp((((datum.datum.max)/3) * 32),11,28)"}, "strength":0.1},
+                {"force": "collide","iterations":1, "radius": {"expr": "clamp((((datum.datum.max)/3) * 32),10,23)"}, "strength":0.1},
                 {"force": "x", "x": "xfocus", "strength": 0.3},
                 {"force": "y", "y": "yfocus", "strength": 0.3},
 

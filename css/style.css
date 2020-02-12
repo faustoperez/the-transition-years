@@ -10,6 +10,8 @@
     --social: #2BA4A0;
     --technology: #FFAA36;
     --science: #F84B5A;
+    --economy: #FF88AA;
+    --milestone: #5F5F5F;
 }
 
 @font-face {
@@ -54,6 +56,11 @@ a:hover {
 
 p {
     margin: 1rem 0;
+}
+
+.wrapper {
+    min-height: 100vh;
+    height: 2560px;
 }
 
 .container {
@@ -134,6 +141,7 @@ main {
 .legend {
     position: sticky;
     top: 20px;
+    width: 100%;
     max-width: 250px;
     border-top: 3px solid var(--text-color);
     padding-bottom: 60px;
@@ -175,7 +183,29 @@ main {
 .legend-bubbles span.social {
     background-color: var(--social);
 }
-
+.legend-bubbles span.economy {
+    background-color: var(--economy);
+}
+.legend-bubbles div.milestone {
+    width: 15px;
+    height: 15px;
+    background-color: var(--milestone);
+    display: inline-block;
+    margin: 0 14px 0 0;
+    
+    /* Rotate */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+/* Rotate Origin */
+    -webkit-transform-origin: 5 100%;
+    -moz-transform-origin: 5 100%;
+    -ms-transform-origin: 5 100%;
+    -o-transform-origin: 5 100%;
+    transform-origin: 5 100%;
+}
 .legend-bubbles li {
     display: flex;
     align-items: center;
@@ -184,13 +214,14 @@ main {
     font-weight: 600;
 }
 
+#mainContent {
+    display: flex;
+}
+
 #view {
     border-top: 3px solid var(--text-color);
-<<<<<<< HEAD
-    width: 100%;
-=======
-    margin-left: 5%;
->>>>>>> cb8db0118c907410eae1f53d0fa24d8928204a27
+    /* margin-left: 5%; */
+    flex: 1;
 }
 
 footer {

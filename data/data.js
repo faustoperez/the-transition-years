@@ -1,9 +1,9 @@
 let data = [
   {
     "year": 2020,
-    "month": 01,
+    "month": 1,
     "size": 5,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Political",
     "title": "The EU launches the European Green New Deal, promising a \"new growth paradigm\" to reach net zero emissions.",
@@ -93,7 +93,7 @@ let data = [
     "size": 3,
     "default": false,
     "scenario": "act-Now",
-    "cat": "Economics",
+    "cat": "Economy",
     "title": "The 10 world's largest banks commit to ending investment in fossil fuels as of 2025, following the European Investment Bank's lead.",
     "source": "https://www.theguardian.com/environment/2019/nov/15/european-investment-bank-to-phase-out-fossil-fuels-financing",
     "Source Name": "European Investment Bank to phase out fossil fuel financing. The Guardian."
@@ -135,7 +135,7 @@ let data = [
     "year": 2022,
     "month": 1,
     "size": 5,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Milestone",
     "title": "The investment of G20 countries (responsible for 80% of global carbon emissions) on climate change prevention and mitigation strategies reaches 100 billion dollars by 2022.",
@@ -190,7 +190,7 @@ let data = [
     "year": 2024,
     "month": 3,
     "size": 2,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Political",
     "title": "Improved access to quality education and family planing for girls becomes the top priority for low- and lower-middle-income countries. This measure enhances gender equality, creates new opportunities for women and their families, and slows population growth.",
@@ -214,7 +214,7 @@ let data = [
     "size": 2,
     "default": false,
     "scenario": "act-Now",
-    "cat": "Economics",
+    "cat": "Economy",
     "title": "Seven central banks jointly reject bonds that have a “large climate footprint” by giving consideration to sustainability aspects when investing in foreign exchange reserves",
     "source": "https://www.riksbank.se/en-gb/press-and-published/speeches-and-presentations/2019/floden-riksbank-selling-bonds-for-climate-reasons/",
     "Source Name": ""
@@ -333,7 +333,7 @@ let data = [
     "year": 2028,
     "month": 9,
     "size": 2,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Political",
     "title": "Nineteen Asian and European countries pass laws to clean up chemicals in refrigerators and air conditioners already in circulation, a measure similar to taking 629 million cars off the roads",
@@ -531,7 +531,7 @@ let data = [
     "year": 2033,
     "month": 3,
     "size": 3,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Economy",
     "title": "Businesses across the world are increasingly moving towards renewable energy and setting internal prices on carbon to cut down their own emissions.",
@@ -740,7 +740,7 @@ let data = [
     "year": 2040,
     "month": 10,
     "size": 5,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Energy",
     "title": "The rapid growth of renewable energy has redrawn the geopolitical map of the 21st century. Almost every country in the world has been able to achieve energy independence.",
@@ -759,367 +759,3 @@ let data = [
     "Source Name": "Wikipedia"
   }
 ]
-
-
-// [
-//        {
-//          "year": 2020,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "gsdfg",
-//          "cat": "a",
-//          "size": 1,
-//          "value": 0.657,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2030,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "aserwsdfs",
-//          "cat": "a",
-//          "size": 1,
-//          "value": 0.822,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2035,
-//          "source": "someLink",
-//          "default": true,
-//          "title": "eadsfjkewroiew hoi weroi  qwerad sfkhwerqe qewr dsfkjasdfew",
-//          "cat": "e",
-//          "size": 2,
-//          "value": 0.98,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2020,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfe",
-//          "cat": "d",
-//          "size": 2,
-//          "value": 0.657,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2022,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfe",
-//          "cat": "b",
-//          "size": 3,
-//          "value": 0.691,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2035,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfeawa",
-//          "cat": "b",
-//          "size": 3,
-//          "value": 0.879,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2040,
-//          "source": "someLink",
-//          "default": true,
-//          "title": "asfea",
-//          "cat": "c",
-//          "size": 3,
-//          "value": 0.98,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2028,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfe",
-//          "cat": "c",
-//          "size": 1,
-//          "value": 0.759,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2032,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "c",
-//          "size": 2,
-//          "value": 0.853,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2020,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "d",
-//          "size": 1,
-//          "value": 0.657,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2032,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "d",
-//          "size": 3,
-//          "value": 0.853,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2040,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "a",
-//          "size": 1,
-//          "value": 0.98,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2036,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "d",
-//          "size": 2,
-//          "value": 0.878,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2024,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "c",
-//          "size": 3,
-//          "value": 0.737,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2035,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "d",
-//          "size": 1,
-//          "value": 0.879,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2024,
-//          "source": "someLink",
-//          "default": true,
-//          "title": "co2-concentration",
-//          "cat": "d",
-//          "size": 2,
-//          "value": 0.737,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2026,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "a",
-//          "size": 3,
-//          "value": 0.717,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2030,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "a",
-//          "size": 1,
-//          "value": 0.822,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2020,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "gsdfg",
-//          "cat": "a",
-//          "size": 1,
-//          "value": 0.657,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2030,
-//          "source": "someLink",
-//          "default": true,
-//          "title": "aserwsdfs",
-//          "cat": "a",
-//          "size": 1,
-//          "value": 0.822,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2040,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfe",
-//          "cat": "a",
-//          "size": 2,
-//          "value": 0.98,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2020,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfe",
-//          "cat": "b",
-//          "size": 2,
-//          "value": 0.657,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2022,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfe",
-//          "cat": "d",
-//          "size": 3,
-//          "value": 0.691,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2035,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfeawa",
-//          "cat": "b",
-//          "size": 3,
-//          "value": 0.879,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2040,
-//          "source": "someLink",
-//          "default": true,
-//          "title": "asfea",
-//          "cat": "c",
-//          "size": 3,
-//          "value": 0.98,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2028,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "asdfe",
-//          "cat": "c",
-//          "size": 1,
-//          "value": 0.759,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2032,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "c",
-//          "size": 2,
-//          "value": 0.853,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2020,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "b",
-//          "size": 1,
-//          "value": 0.657,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2032,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "d",
-//          "size": 3,
-//          "value": 0.853,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2040,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "a",
-//          "size": 1,
-//          "value": 0.98,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2036,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "e",
-//          "size": 2,
-//          "value": 0.878,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2024,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "c",
-//          "size": 3,
-//          "value": 0.737,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2035,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "e",
-//          "size": 1,
-//          "value": 0.879,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2024,
-//          "source": "someLink",
-//          "default": true,
-//          "title": "co2-concentration",
-//          "cat": "d",
-//          "size": 2,
-//          "value": 0.737,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2026,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "a",
-//          "size": 3,
-//          "value": 0.717,
-//          "scenario": "act-Now"
-//        },
-//        {
-//          "year": 2030,
-//          "source": "someLink",
-//          "default": false,
-//          "title": "co2-concentration",
-//          "cat": "c",
-//          "size": 1,
-//          "value": 0.822,
-//          "scenario": "act-Now"
-//        }
-//      ]
