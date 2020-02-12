@@ -11,8 +11,7 @@
     --technology: #FFAA36;
     --science: #F84B5A;
     --economy: #FF88AA;
-    --milestone: #5F5F5F;
-
+    --milestone: #5F5F5F;}
 
 @font-face {
     font-family: 'Inter';
@@ -193,7 +192,6 @@ main {
 .legend-bubbles span.social {
     background-color: var(--social);
 }
-<<<<<<< HEAD
 .legend-bubbles span.economy {
     background-color: var(--economy);
 }
@@ -217,13 +215,6 @@ main {
     -o-transform-origin: 5 100%;
     transform-origin: 5 100%;
 }
-=======
-
-.legend-bubbles span.economics {
-    background-color: var(--economics);
-}
-
->>>>>>> 45b17cff1a471911cd26c185374a5cf16ac6d736
 .legend-bubbles li {
     display: flex;
     align-items: center;
@@ -232,25 +223,16 @@ main {
     font-weight: 600;
 }
 
-<<<<<<< HEAD
 #mainContent {
     display: flex;
-=======
-.legend-bubbles li:first-of-type {
-    margin-bottom: 20px;
- 
->>>>>>> 45b17cff1a471911cd26c185374a5cf16ac6d736
+
 }
 
 #view {
     border-top: 3px solid var(--text-color);
-<<<<<<< HEAD
     /* margin-left: 5%; */
     flex: 1;
-=======
-    width: 100%;
-    margin-left: 5%;
->>>>>>> 45b17cff1a471911cd26c185374a5cf16ac6d736
+
 }
 
 footer {
