@@ -211,6 +211,7 @@ footer h2 {
 .about p {
     column-count: 2;
     column-gap: 80px;
+    font-size: 18px;
 }
 
 .references {
