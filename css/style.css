@@ -12,7 +12,7 @@
     --science: #F84B5A;
     --economy: #FF88AA;
     --milestone: #5F5F5F;
-}
+
 
 @font-face {
     font-family: 'Inter';
@@ -151,18 +151,28 @@ main {
     margin-bottom: 60px;
 }
 
+
 .legend-bubbles span {
     display: inline-block;
     width: 18px;
     height: 18px;
     border-radius: 50%;
     margin: 0 12px 0 0;
-    background-color: var(--accent); 
+    background-color: var(--text-color); 
 }
 
 .legend img {
     min-width: 167px;
 }
+
+.legend-bubbles span.milestones {
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+    transform: rotate(45deg);
+    margin: 0 14px 0 2px;
+}
+
 
 .legend-bubbles span.politics {
     background-color: var(--politics);
@@ -183,6 +193,7 @@ main {
 .legend-bubbles span.social {
     background-color: var(--social);
 }
+<<<<<<< HEAD
 .legend-bubbles span.economy {
     background-color: var(--economy);
 }
@@ -206,6 +217,13 @@ main {
     -o-transform-origin: 5 100%;
     transform-origin: 5 100%;
 }
+=======
+
+.legend-bubbles span.economics {
+    background-color: var(--economics);
+}
+
+>>>>>>> 45b17cff1a471911cd26c185374a5cf16ac6d736
 .legend-bubbles li {
     display: flex;
     align-items: center;
@@ -214,14 +232,25 @@ main {
     font-weight: 600;
 }
 
+<<<<<<< HEAD
 #mainContent {
     display: flex;
+=======
+.legend-bubbles li:first-of-type {
+    margin-bottom: 20px;
+ 
+>>>>>>> 45b17cff1a471911cd26c185374a5cf16ac6d736
 }
 
 #view {
     border-top: 3px solid var(--text-color);
+<<<<<<< HEAD
     /* margin-left: 5%; */
     flex: 1;
+=======
+    width: 100%;
+    margin-left: 5%;
+>>>>>>> 45b17cff1a471911cd26c185374a5cf16ac6d736
 }
 
 footer {
