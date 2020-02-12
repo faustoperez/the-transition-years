@@ -10,6 +10,7 @@
     --social: #2BA4A0;
     --technology: #FFAA36;
     --science: #F84B5A;
+    --economics: #ff88aa;
 }
 
 @font-face {
@@ -143,18 +144,28 @@ main {
     margin-bottom: 60px;
 }
 
+
 .legend-bubbles span {
     display: inline-block;
     width: 18px;
     height: 18px;
     border-radius: 50%;
     margin: 0 12px 0 0;
-    background-color: var(--accent); 
+    background-color: var(--text-color); 
 }
 
 .legend img {
     min-width: 167px;
 }
+
+.legend-bubbles span.milestones {
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+    transform: rotate(45deg);
+    margin: 0 14px 0 2px;
+}
+
 
 .legend-bubbles span.politics {
     background-color: var(--politics);
@@ -176,6 +187,10 @@ main {
     background-color: var(--social);
 }
 
+.legend-bubbles span.economics {
+    background-color: var(--economics);
+}
+
 .legend-bubbles li {
     display: flex;
     align-items: center;
@@ -184,13 +199,15 @@ main {
     font-weight: 600;
 }
 
+.legend-bubbles li:first-of-type {
+    margin-bottom: 20px;
+ 
+}
+
 #view {
     border-top: 3px solid var(--text-color);
-<<<<<<< HEAD
     width: 100%;
-=======
     margin-left: 5%;
->>>>>>> cb8db0118c907410eae1f53d0fa24d8928204a27
 }
 
 footer {
