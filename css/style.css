@@ -59,7 +59,7 @@ p {
 
 .wrapper {
     min-height: 100vh;
-    height: 2560px;
+    height: 2670px;
 }
 
 .container {
@@ -215,6 +215,7 @@ main {
     -o-transform-origin: 5 100%;
     transform-origin: 5 100%;
 }
+
 .legend-bubbles li {
     display: flex;
     align-items: center;
@@ -223,16 +224,19 @@ main {
     font-weight: 600;
 }
 
+.legend-bubbles li:first-of-type {
+    margin-bottom: 20px;
+}
+
 #mainContent {
     display: flex;
-
+    padding-bottom: 50px;
 }
 
 #view {
     border-top: 3px solid var(--text-color);
-    /* margin-left: 5%; */
+    margin-left: 5%;
     flex: 1;
-
 }
 
 footer {

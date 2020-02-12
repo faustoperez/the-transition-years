@@ -27,14 +27,10 @@ function initalize() {
 
   vegaEmbed('#view',VEGA_SPEC, DEFAULT_OPTIONS)
     .then(function(result) {
-        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       result.view.insert('fiction',newData).runAsync();
       result.view.insert('backNormal',newData).runAsync();
       result.view.resize();
-      console.log(result.view._runtime)
-      //result.view.addSignalListener('tooltip', function(name, value) {
-      //      console.log('WIDTH: ' + value);
-      //      })
     })
     .catch(console.error);
   
