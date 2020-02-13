@@ -11,7 +11,7 @@
     --technology: #FFAA36;
     --science: #F84B5A;
     --economy: #FF88AA;
-    --milestone: #5F5F5F;}
+    --milestone: #000000;}
 
 @font-face {
     font-family: 'Inter';
@@ -163,15 +163,6 @@ main {
     min-width: 167px;
 }
 
-.legend-bubbles span.milestones {
-    width: 14px;
-    height: 14px;
-    border-radius: 0;
-    transform: rotate(45deg);
-    margin: 0 14px 0 2px;
-}
-
-
 .legend-bubbles span.politics {
     background-color: var(--politics);
 }
@@ -195,11 +186,11 @@ main {
     background-color: var(--economy);
 }
 .legend-bubbles div.milestone {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     background-color: var(--milestone);
     display: inline-block;
-    margin: 0 14px 0 0;
+    margin: 0 14px 0 2px;
     
     /* Rotate */
     -webkit-transform: rotate(-45deg);
@@ -225,6 +216,10 @@ main {
 
 .legend-bubbles li:first-of-type {
     margin-bottom: 20px;
+}
+
+.marks g.nodes  path {
+    mix-blend-mode: darken;
 }
 
 #mainContent {

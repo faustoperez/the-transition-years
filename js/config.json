@@ -1,19 +1,19 @@
 {
   "line": {"stroke": "#000000", "strokeOpacity": 1},
-  "text": {"fill": "#9095a2", "fontSize": 12, "font":"Inter"},
+  "text": {"fill": "#000000", "fontSize": 14, "font":"Inter"},
   "symbol": {"fillOpacity": 0.8, "strokeOpacity": 1},
   "axis": {
     "tickSize": 5,
     "tickWidth": 1,
     "domain": false,
     "labelOverlap": "parity",
-    "labelColor":"#b2b5bd",
+    "labelColor":"#000000",
     "gridOpacity":1,
     "gridWidth": 1,
     "gridColor": "#d6d8dc",
     "tickColor":"#d6d8dc",
     "labelFont":"Inter",
-    "labelFontSize":12,
+    "labelFontSize":14,
     "titleFont":"Inter",
     "titleFontSize":18,
     "titleFontWeight": "bold"
@@ -23,12 +23,12 @@
     "bandPosition": 5,
     "ticks": true,
     "tickOffset": 0,
-    "tickSize": -20,
+    "tickSize": -25,
     "tickExtra": true,
     "labelAlign": "left",
     "labelBaseline": "top",
     "labelPadding": 10,
-    "labelColor":"#000",
+    "labelColor":"#000000",
     "labelFontWeight":"bold",
     "titlePadding": 50,
     "titleAlign": "right",
@@ -43,7 +43,7 @@
       "#2BA4A0",
       "#FF88AA",
       "#F84B5A",
-      "#5F5F5F",
+      "#000000",
       "#7020FF"
     ],
     "ordinal": [
@@ -52,7 +52,7 @@
       "#2BA4A0",
       "#FF88AA",
       "#F84B5A",
-      "#5F5F5F",
+      "#000000",
       "#7020FF"
       
     ],

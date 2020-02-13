@@ -5,23 +5,27 @@
   "autosize": {"type": "fit", "contains": "content", "resize": false},
   "signals": [
     {
+      "name": "yTextOffset",
+      "value": -30
+    },
+    {
       "name": "active",
       "value": {},
       "on": [
         {
-          "events": "@nodes:mouseover, @nodes:touchstart",
+          "events": "@nodes:mouseover, @nodes:touchstart, @nodes:click",
           "force":true,
           "update": " item()"
         },
-        {"events": "window:mouseout, window:touchend", "update": "{}"}
+        {"events": "@nodes:mouseout, @nodes:touchend", "update": "{}"}
       ]
     },
     {
       "name": "windowOut",
-      "value": "false",
+      "value": "true",
       "on": [
-        {"events": "view:mouseout, view:touchend", "update": "true"},
-        {"events": "view:mouseover, view:touchstart", "update": "false"}
+        {"events": "@nodes:mouseout, view:mouseout", "update": "true"},
+        {"events": "@nodes:mouseover, @nodes:touchstart, @nodes:click", "update": "false"}
       ]
     }
   ],
@@ -134,7 +138,7 @@
               "signal": "if(datum.label,'  +'+datum.label+' ºC','')"
             },
             "dx":{"offset":10},
-            "dy":{"offset":-10}
+            "dy":{"offset":-25}
           }
         }
       }
@@ -171,8 +175,8 @@
               "type": "line",
               "from": {"data": "series"},
               "encode": {
-                "enter": {
-                  "zindex": {"value": 2},
+                "update": {
+                  "zindex": {"value": 1},
                   "x": {"scale": "xscale", "field": "value"},
                   "y": {"scale": "yscale", "field": "year"},
                   "stroke": {"signal": "gradient('color', [0,0], [0.1,0.1])"},
@@ -189,22 +193,28 @@
           "encode": {
             "enter": {
               "fill": {"scale": "colorC", "field": "cat"},
-              "size": {"scale": "size", "field": "size"},
-              "shape": [{"test": "datum.cat=='Milestone'","value": "diamond"}],
-              "zindex": {"value": 0}
+              "fillOpacity": {"value": 1},
+              "size": [
+                {
+                  "test": "datum.cat!='Milestone'",
+                  "scale": "size", "field": "size"
+                },
+                {"value": 1500}
+              ],
+              "shape": [{"test": "datum.cat=='Milestone'","value": "diamond"}]
 
             },
             "update": {
               "yfocus": {"scale": "yscale", "field": "year"},
               "xfocus": {"scale": "xscale", "field": "value"},
               "stroke": {"value": "#000"},
-              "strokeWidth": [{"test": "datum.default==true && windowOut","value": 3}, {"value":0}],
-              "zindex": {"value": 0}
+              "strokeWidth": [{"test": "datum.default && windowOut","value": 3}, {"value":0}],
+              "zindex": {"value": 2}
             },
             "hover": {
               "stroke": {"value": "#000"},
               "strokeWidth": {"value": 3},
-              "zindex": {"value": 1}
+              "zindex": {"value": 3}
             }
           },
           "transform": [
@@ -270,7 +280,7 @@
           "from": {"data": "nodes"},
           "encode": {
             "update": {
-              "y": {"signal": "datum.y", "offset":-20},
+              "y": {"signal": "datum.y + yTextOffset"},
               "x": {"field": {"group": "width"}, "offset":20},
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
@@ -320,13 +330,12 @@
           "interactive": false,
           "encode": {
             "update": {
-              "y": {"signal": "active.y", "offset":-20},
+              "y": {"signal": "active.y + yTextOffset"},
               "x": {"field": {"group": "width"}, "offset":20},
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(active.datum,active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
-              "fill": {"value": "#000"}
+              "text": {"signal": "if(active.datum,active.datum.year + ' / +' + active.datum.value + ' ºC','')"}
             }
           }
         }
@@ -344,7 +353,7 @@
         }
       },
       "axes": [
-    {"orient": "left", "scale": "y2", "format": ".0f", "tickCount": 1, "bandPosition":1}],
+    {"orient": "left", "scale": "y2", "format": ",.2r", "tickCount": 1, "bandPosition":1, "labelFontWeight":"bold"}],
       "marks": [
         {
           "type": "rule",
@@ -383,13 +392,12 @@
           "from": {"data": "backNormal"},
           "encode": {
             "update": {
-              "y": {"field": "year", "scale":"y2", "offset":-20},
+              "y": {"field": "year", "scale":"y2", "offset":{"signal":"yTextOffset"}},
               "x": {"field": {"group": "width"}, "offset":20},
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "datum.year + ' / + 0 ºC'"},
-              "fill": {"value": "#000"}
+              "text": {"signal": "format(datum.year, ',.2r')+' BC'"}
             }
           }
         }

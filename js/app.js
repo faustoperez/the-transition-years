@@ -2,7 +2,7 @@ const VEGA_SPEC = 'js/visualization.vg.json';
 const DEFAULT_OPTIONS = {
   defaultStyle: false,
   renderer:"svg",
-  width: 600,
+  width: window.screen.width < 700? window.screen.width : 700,
   height: 2000,
   actions: false,
   config: "js/config.json",
@@ -19,10 +19,11 @@ function renderList(list) {
   $container.innerHTML = tpl;
 }
 
+
 function initalize() {
   // dom ready
   const newData = data.map(function(d) {
-    return Object.assign(d, { title: d.title.match(/(([\w]+(?:[\W\n|\W\.|\W\,]+[\w\n|\w\.|\w\,]+){0,2})+)/g) });
+    return Object.assign(d, { title: d.title.match(/(([\w]+(?:[\W\n|\W\.|\W\,]+[\w\n|\w\.|\w\,]+){0,3})+)/g) });
   });
 
   vegaEmbed('#view',VEGA_SPEC, DEFAULT_OPTIONS)
@@ -31,6 +32,11 @@ function initalize() {
       result.view.insert('fiction',newData).runAsync();
       result.view.insert('backNormal',newData).runAsync();
       result.view.resize();
+//       result.view.addSignalListener('width', function(name, value) {
+//   console.log('WIDTH: ' + value);
+// });
+//       console.log(result.view)
+      
     })
     .catch(console.error);
   
@@ -38,3 +44,4 @@ function initalize() {
 }
 
 document.addEventListener('DOMContentLoaded', initalize);
+console.log(window.screen)
