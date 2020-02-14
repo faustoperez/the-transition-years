@@ -13,7 +13,7 @@
     --economy: #FF88AA;
     --milestone: #000000;}
 
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=fallback');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
 
 @font-face {
     font-family: 'Inter';
