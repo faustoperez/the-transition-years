@@ -13,7 +13,12 @@
     --economy: #FF88AA;
     --milestone: #000000;}
 
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
+@font-face {
+    font-family: 'Baskerville';
+    font-style:  normal;
+    font-display: fallback;
+    src: url("fonts/Baskerville.woff") format("woff");
+}
 
 @font-face {
     font-family: 'Inter';
@@ -70,7 +75,7 @@ p {
 }
 
 header h1 {
-    font-family: 'Baskerville', 'Libre Baskerville', Georgia, serif;
+    font-family: 'Baskerville', Georgia, serif;
     font-size: 140px;
     line-height: 0.75;
     text-align: center;
@@ -245,7 +250,7 @@ footer {
 }
 
 footer h2 {
-    font-family: 'Baskerville', 'Libre Baskerville', Georgia, serif;
+    font-family: 'Baskerville', Georgia, serif;
     font-size: 80px;
     line-height: 1;
 }
