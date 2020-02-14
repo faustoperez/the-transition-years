@@ -13,6 +13,8 @@
     --economy: #FF88AA;
     --milestone: #000000;}
 
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=fallback');
+
 @font-face {
     font-family: 'Inter';
     font-style:  normal;
@@ -68,7 +70,7 @@ p {
 }
 
 header h1 {
-    font-family: 'Baskerville', Georgia, serif;
+    font-family: 'Baskerville', 'Libre Baskerville', Georgia, serif;
     font-size: 140px;
     line-height: 0.75;
     text-align: center;
@@ -149,7 +151,6 @@ main {
     margin-bottom: 60px;
 }
 
-
 .legend-bubbles span {
     display: inline-block;
     width: 18px;
@@ -162,6 +163,15 @@ main {
 .legend img {
     min-width: 167px;
 }
+
+.legend-bubbles span.milestones {
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+    transform: rotate(45deg);
+    margin: 0 14px 0 2px;
+}
+
 
 .legend-bubbles span.politics {
     background-color: var(--politics);
@@ -186,11 +196,11 @@ main {
     background-color: var(--economy);
 }
 .legend-bubbles div.milestone {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     background-color: var(--milestone);
     display: inline-block;
-    margin: 0 14px 0 2px;
+    margin: 0 14px 0 0;
     
     /* Rotate */
     -webkit-transform: rotate(-45deg);
@@ -218,10 +228,6 @@ main {
     margin-bottom: 20px;
 }
 
-.marks g.nodes  path {
-    mix-blend-mode: darken;
-}
-
 #mainContent {
     display: flex;
     padding-bottom: 50px;
@@ -239,8 +245,9 @@ footer {
 }
 
 footer h2 {
-    font-family: 'Baskerville', Georgia, serif;
+    font-family: 'Baskerville', 'Libre Baskerville', Georgia, serif;
     font-size: 80px;
+    line-height: 1;
 }
 
 .about {
@@ -256,7 +263,6 @@ footer h2 {
 
 .references {
     margin-top: 80px;
-
 }
 
 .references ol {
@@ -282,15 +288,14 @@ footer h2 {
 
 .subfooter {
     background: var(--text-color);
-    color: var(--white);
-    
+    color: var(--white);  
 }
 
 .subfooter .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    min-height: 100px;
 }
 
 .subfooter a {
@@ -336,23 +341,26 @@ footer h2 {
     }
 
     #view {
-        margin-left: 0
+        margin-left: 0;
     }
-
 }
 
 @media screen and (max-width: 800px) {
 
     header h1 {
-        font-size: 96px;
+        font-size: 80px;
     }
 
     header h2, h3 {
-        font-size: 16px;;
+        font-size: 16px;
     }
 
     header p {
         font-size: 18px;
+    }
+
+    footer h2 {
+        font-size: 64px;
     }
 
     .references ol, .about p {
@@ -360,8 +368,15 @@ footer h2 {
         column-gap: 0;
     }
 
-    .subfooter {
+    .subfooter .container {
         flex-direction: column;
+        padding: 40px 0;
+        justify-content: normal;
+        height: auto;
+    }
+
+    .subfooter .social {
+        padding-top: 16px;
     }
 
     .legend {
