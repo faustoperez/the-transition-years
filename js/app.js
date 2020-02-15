@@ -42,10 +42,10 @@ function initalize() {
       result.view.insert('fiction',newData).runAsync();
       result.view.insert('backNormal',newData).runAsync();
       result.view.resize();
-      // result.view.addSignalListener('width', function(name, value) {
-      //   console.log('WIDTH VEGA SIGNAL:');
-      //   console.log('WIDTH: ' + value);
-      //   });      
+       result.view.addSignalListener('width', function(name, value) {
+         console.log('WIDTH VEGA SIGNAL:');
+         console.log('WIDTH: ' + value);
+         });      
     })
     .catch(console.error);
   

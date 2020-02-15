@@ -250,7 +250,7 @@
               "strokeWidth": {"value": 1.5},
               "stroke": [
                 {
-                  "test": "datum.datum.default==true  && width > 400 && !active.datum && windowOut",
+                  "test": "datum.datum.default==true  && width > 300 && !active.datum && windowOut",
                   "value": "#000"
                 },
                 {"value": "transparent"}
@@ -269,7 +269,7 @@
               "x": {"field": {"group": "width"}, "offset":20},
               "align": {"value": "left"},
               "baseline": {"value": "middle"},
-              "text": {"signal": "if(datum.datum.default==true && width > 400 && !active.datum && windowOut,datum.datum.title,'')"}
+              "text": {"signal": "if(datum.datum.default==true && width > 300 && !active.datum && windowOut,datum.datum.title,'')"}
             }
           }
         },
@@ -285,7 +285,7 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(datum.datum.default==true && width > 400 && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
+              "text": {"signal": "if(datum.datum.default==true && width > 300 && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
               "href":{"signal": "'#'+ datum.datum.id"},
               "cursor":{"value": "pointer"},
               "fill":{"value":"black"}
@@ -306,7 +306,7 @@
               "strokeWidth": {"value": 1.5},
               "stroke": [
                 {
-                  "test": "active.datum  && width > 400",
+                  "test": "active.datum  && width > 300",
                   "value": "#000"
                 },
                 {"value": "transparent"}
@@ -325,7 +325,7 @@
               "align": {"value": "left"},
               "baseline": {"value": "middle"},
               "lineBreak": {"value": "\n"},
-              "text": {"signal": "if(active.datum  && width > 400,active.datum.title,'')"}
+              "text": {"signal": "if(active.datum  && width > 300,active.datum.title,'')"}
             }
           }
         },
@@ -340,7 +340,7 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(active.datum && width > 400, active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
+              "text": {"signal": "if(active.datum && width > 300, active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
               "href":{"signal": "if(active.datum, '#'+ active.datum.id,'')"},
               "cursor":{"value": "pointer"},
               "fill":{"value":"black"}
@@ -364,7 +364,7 @@
         }
       },
       "axes": [
-    {"orient": "left", "scale": "y2", "format": {"signal":"if(width > 400,',.2r','.3s')"}, "tickCount": 1, "bandPosition":1, "labelFontWeight":"bold"}],
+    {"orient": "left", "scale": "y2", "format": {"signal":"if(width > 300,',.2r','.3s')"}, "tickCount": 1, "bandPosition":1, "labelFontWeight":"bold"}],
       "marks": [
         {
           "type": "rule",
@@ -377,7 +377,7 @@
               "x2": {"field": {"group": "width"},"offset":6},
               "strokeWidth": {"value": 1.5},
               "stroke":{"value": "#000"},
-              "strokeOpacity":{"signal": "if(width > 400,1,0)"}
+              "strokeOpacity":{"signal": "if(width > 300,1,0)"}
             
             }
           }
@@ -393,7 +393,7 @@
               "x": {"field": {"group": "width"}, "offset":20},
               "align": {"value": "left"},
               "baseline": {"value": "middle"},
-              "text": {"signal": "if(width > 400,datum.title,'')"}
+              "text": {"signal": "if(width > 300,datum.title,'')"}
             }
           }
         },
@@ -409,7 +409,7 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(width > 400,format(datum.year, ',.2r')+' BC ('+datum.id+')','')"},
+              "text": {"signal": "if(width > 300,format(datum.year, ',.2r')+' BC ('+datum.id+')','')"},
               "href":{"signal": "'#'+datum.id"},
               "cursor":{"value": "pointer"},
               "fill":{"value":"black"}
