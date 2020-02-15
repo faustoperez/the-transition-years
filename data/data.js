@@ -1,5 +1,5 @@
 let data = [
-  {
+  { "id":1,
     "year": 2020,
     "month": 1,
     "size": 5,
@@ -10,7 +10,7 @@ let data = [
     "source": "https://www.gndforeurope.com/",
     "Source Name": "The Green New Deal for Europe."
   },
-  {
+  { "id":1,
     "year": 2020,
     "month": 4,
     "size": 3,
@@ -21,7 +21,7 @@ let data = [
     "source": "https://www.newsweek.com/creativity-crisis-74665",
     "Source Name": "The creativity crisis. News Week."
   },
-  {
+  { "id":1,
     "year": 2020,
     "month": 11,
     "size": 4,
@@ -32,7 +32,7 @@ let data = [
     "source": "https://heliogen.com/",
     "Source Name": "Heliogen"
   },
-  {
+  { "id":1,
     "year": 2020,
     "month": 6,
     "size": 4,
@@ -43,7 +43,7 @@ let data = [
     "source": "https://www.bbc.com/news/world-europe-48814970",
     "Source Name": "Madrid Central' protest: Thousands oppose suspension of anti-pollution plan. BBC."
   },
-  {
+  { "id":1,
     "year": 2020,
     "month": 8,
     "size": 3,
@@ -54,7 +54,7 @@ let data = [
     "source": "https://www.aljazeera.com/news/2019/12/cop25-summit-fails-address-key-carbon-markets-issue-191215145030619.html",
     "Source Name": "COP25 summit fails to address key carbon markets issue. Al Jazeera."
   },
-  {
+  { "id":1,
     "year": 2020,
     "month": 1,
     "size": 4,
@@ -65,7 +65,7 @@ let data = [
     "source": "https://apnews.com/1e946085841af1e942659d4154d75d03",
     "Source Name": "Spain declares climate emergency, gets climate plan ready. AP News."
   },
-  {
+  { "id":1,
     "year": 2021,
     "month": 2,
     "size": 5,
@@ -76,7 +76,7 @@ let data = [
     "source": "https://www.forbes.com/sites/davekeating/2019/09/05/a-little-known-eu-investor-dispute-treaty-could-kill-the-paris-climate-agreement/#1ca65d184ecf\nhttps://www.energy-charter-dirty-secrets.org/",
     "Source Name": "A little-known EU investor dispute treaty could kill the Paris Climate Agreement. Forbes."
   },
-  {
+  { "id":1,
     "year": 2021,
     "month": 6,
     "size": 2,
@@ -87,7 +87,7 @@ let data = [
     "source": "https://www.afdb.org/en/news-and-events/say-no-to-plastic-the-african-development-bank-shows-the-way-in-the-fight-against-plastic-pollution-in-africa-18226",
     "Source Name": "Say no to plastic! The African Development Bank shows the way in the fight against plastic pollution in Africa. African Development Bank Group."
   },
-  {
+  { "id":1,
     "year": 2022,
     "month": 1,
     "size": 3,
@@ -98,7 +98,7 @@ let data = [
     "source": "https://www.theguardian.com/environment/2019/nov/15/european-investment-bank-to-phase-out-fossil-fuels-financing",
     "Source Name": "European Investment Bank to phase out fossil fuel financing. The Guardian."
   },
-  {
+  { "id":1,
     "year": 2022,
     "month": 3,
     "size": 2,
@@ -109,7 +109,7 @@ let data = [
     "source": "https://www.cbsnews.com/news/venice-flooding-council-is-flooded-moments-after-rejecting-climate-change-measures/",
     "Source Name": "Venice government office is flooded minutes after officials rejected plan to combat climate change. CBS News."
   },
-  {
+  { "id":1,
     "year": 2022,
     "month": 6,
     "size": 3,
@@ -120,7 +120,7 @@ let data = [
     "source": "https://daily.jstor.org/the-miyawaki-method-a-better-way-to-build-forests/",
     "Source Name": "The Miyawaki Method: A Better Way to Build Forests?. The Daily JSTOR."
   },
-  {
+  { "id":1,
     "year": 2022,
     "month": 6,
     "size": 2,
@@ -131,7 +131,7 @@ let data = [
     "source": "https://arstechnica.com/science/2019/09/crops-under-solar-panels-can-be-a-win-win/",
     "Source Name": "Crops under solar panels can be a win-win. Ars Technica."
   },
-  {
+  { "id":1,
     "year": 2022,
     "month": 1,
     "size": 5,
@@ -142,7 +142,7 @@ let data = [
     "source": "https://www.oecd.org/environment/cc/g20-climate/synthesis-investing-in-climate-investing-in-growth.pdf",
     "Source Name": "Investing in climate, investing in growth. Organisation for Economic Co-operation and Development."
   },
-  {
+  { "id":1,
     "year": 2023,
     "month": 4,
     "size": 1,
@@ -153,7 +153,7 @@ let data = [
     "source": "https://theintercept.com/2019/10/18/coca-cola-recycling-plastics-pollution/",
     "Source Name": "Leaked audio reveals how Coca-Cola undermines plastic recycling efforts. The Intercept."
   },
-  {
+  { "id":1,
     "year": 2023,
     "month": 10,
     "size": 1,
@@ -164,7 +164,7 @@ let data = [
     "source": "",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2023,
     "month": 12,
     "size": 3,
@@ -175,7 +175,7 @@ let data = [
     "source": "https://www.wsj.com/articles/investors-to-big-oil-make-it-rain-11572612256",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2023,
     "month": 5,
     "size": 2,
@@ -186,7 +186,7 @@ let data = [
     "source": "https://www.cbsnews.com/news/terracycle-loop-zero-waste-products-procter-gamble-nestle-household-brands-expanding/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2024,
     "month": 3,
     "size": 2,
@@ -197,7 +197,7 @@ let data = [
     "source": "https://www.worldbank.org/en/topic/girlseducation",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2024,
     "month": 6,
     "size": 3,
@@ -208,7 +208,7 @@ let data = [
     "source": "https://www.cedamia.org/global/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2024,
     "month": 9,
     "size": 2,
@@ -219,7 +219,7 @@ let data = [
     "source": "https://www.riksbank.se/en-gb/press-and-published/speeches-and-presentations/2019/floden-riksbank-selling-bonds-for-climate-reasons/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2025,
     "month": 7,
     "size": 2,
@@ -230,7 +230,7 @@ let data = [
     "source": "https://www.bbcgoodfood.com/howto/guide/how-reduce-food-waste",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2025,
     "month": 6,
     "size": 5,
@@ -241,7 +241,7 @@ let data = [
     "source": "https://www.theguardian.com/business/2018/sep/11/global-energy-demand-fossil-fuels-oil-gas-wind-solar-carbon-tracker",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2025,
     "month": 5,
     "size": 5,
@@ -252,7 +252,7 @@ let data = [
     "source": "https://www.greenpeace.org/usa/global-warming/exxon-and-the-oil-industry-knew-about-climate-change/exxons-climate-denial-history-a-timeline/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2026,
     "month": 2,
     "size": 2,
@@ -263,7 +263,7 @@ let data = [
     "source": "https://youtu.be/YY6PQAI4TZE\nBetter to link to the blog: https://bicycledutch.wordpress.com/2013/12/12/amsterdam-children-fighting-cars-in-1972/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2026,
     "month": 8,
     "size": 3,
@@ -274,7 +274,7 @@ let data = [
     "source": "https://www.commondreams.org/news/2019/06/19/pipeline-will-not-be-built-indigenous-and-climate-leaders-tell-trudeau-after-canada",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2026,
     "month": 10,
     "size": 2,
@@ -285,7 +285,7 @@ let data = [
     "source": "https://www.nationalgeographic.com/environment/2019/08/forests-of-seaweed-can-help-climate-change-without-fire/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2027,
     "month": 10,
     "size": 5,
@@ -296,7 +296,7 @@ let data = [
     "source": "https://www.bloomberg.com/news/articles/2019-08-27/solar-wind-provide-cheapest-power-for-two-thirds-of-globe-map",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2027,
     "month": 10,
     "size": 3,
@@ -307,7 +307,7 @@ let data = [
     "source": "https://content.ftserussell.com/sites/default/files/research/fr_investing_in_the_global_green_economy.pdf",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2027,
     "month": 4,
     "size": 2,
@@ -318,7 +318,7 @@ let data = [
     "source": "https://www.xataka.com/vehiculos/todas-ayudas-que-hay-ahora-a-coches-electricos-espana",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2027,
     "month": 8,
     "size": 1,
@@ -329,7 +329,7 @@ let data = [
     "source": "https://www.smartcitiesdive.com/ex/sustainablecitiescollective/why-cities-should-invest-beekeeping/1093071/\nhttps://inhabitat.com/stackable-urban-beehive-is-perfect-for-beginner-beekeepers/\nhttps://theurbanbeehive.com.au/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2028,
     "month": 9,
     "size": 2,
@@ -340,7 +340,7 @@ let data = [
     "source": "https://www.drawdown.org/solutions/materials/refrigerant-management",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2028,
     "month": 3,
     "size": 2,
@@ -351,7 +351,7 @@ let data = [
     "source": "https://www.afr.com/companies/energy/morgan-stanley-says-these-companies-will-profit-from-climate-change-20191028-p534w8",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2028,
     "month": 11,
     "size": 1,
@@ -362,7 +362,7 @@ let data = [
     "source": "https://www.theguardian.com/environment/2019/nov/21/oxford-dictionaries-declares-climate-emergency-the-word-of-2019",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2029,
     "month": 6,
     "size": 2,
@@ -373,7 +373,7 @@ let data = [
     "source": "https://youtu.be/yI9wMtTvWps",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2029,
     "month": 10,
     "size": 3,
@@ -384,7 +384,7 @@ let data = [
     "source": "https://www.half-earthproject.org/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2029,
     "month": 3,
     "size": 1,
@@ -395,7 +395,7 @@ let data = [
     "source": "https://dbdh.dk/dhc-in-denmark/district-heating-history/ \nhttps://books.google.es/books?id=ck6dBAAAQBAJ&pg=PA18&lpg=PA18&dq=dhc+systems+asia&source=bl&ots=a78UWOdUxL&sig=ACfU3U16RgLXL7BoqMQvNzYkRysMqUfz3A&hl=en&sa=X&ved=2ahUKEwjK3L3LurXnAhXiolwKHWN9DksQ6AEwAHoECAcQAQ#v=onepage&q=dhc%20systems%20asia&f=false\nhttps://books.google.es/books?id=Mn_6CAAAQBAJ&pg=PA150&lpg=PA150&dq=dhc+systems+asia&source=bl&ots=yI9T9Ztfnw&sig=ACfU3U1vMZtcTf4R0Lby5gyk_cv8J5PnLw&hl=en&sa=X&ved=2ahUKEwjK3L3LurXnAhXiolwKHWN9DksQ6AEwAXoECAkQAQ#v=onepage&q=dhc%20systems%20asia&f=false",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2030,
     "month": 6,
     "size": 1,
@@ -406,18 +406,18 @@ let data = [
     "source": "https://elpais.com/elpais/2018/05/07/seres_urbanos/1525688899_487227.html\nhttp://www.euro.who.int/__data/assets/pdf_file/0005/321971/Urban-green-spaces-and-health-review-evidence.pdf?ua=1\nhttps://elpais.com/elpais/2018/05/07/seres_urbanos/1525688899_487227.html",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2030,
     "month": 9,
     "size": 2,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Political",
     "title": "Sixty five percent of all European cities advocate for free public transportation.",
     "source": "https://www.alternet.org/2019/12/now-lets-do-this-everywhere-kansas-city-missouri-approves-free-public-transit-for-all/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2030,
     "month": 12,
     "size": 4,
@@ -428,7 +428,7 @@ let data = [
     "source": "https://www.iea.org/reports/world-energy-outlook-2019/oil#abstract",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2030,
     "month": 1,
     "size": 5,
@@ -439,7 +439,7 @@ let data = [
     "source": "https://phys.org/news/2019-12-greenland-ice-losses-faster.html",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2031,
     "month": 1,
     "size": 3,
@@ -450,7 +450,7 @@ let data = [
     "source": "https://www.forbes.com/sites/mikescott/2019/09/02/economics-of-electric-vehicles-mean-oils-days-as-a-transport-fuel-are-numbered/#648ceb7c5102",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2031,
     "month": 3,
     "size": 2,
@@ -461,7 +461,7 @@ let data = [
     "source": "https://viacampesina.org/en/with-rights-and-in-democracy-we-will-continue-building-social-and-climate-justice/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2032,
     "month": 12,
     "size": 3,
@@ -472,7 +472,7 @@ let data = [
     "source": "https://www.sciencedirect.com/science/article/abs/pii/S2095311914608881\nhttps://www.bbc.com/news/science-environment-47611026\nhttp://www.ox.ac.uk/news/2018-10-12-balanced-plant-based-diets-improve-our-health-and-health-planet",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2032,
     "month": 8,
     "size": 2,
@@ -483,7 +483,7 @@ let data = [
     "source": "https://mag.uchicago.edu/law-policy-society/parks-and-restoration",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2032,
     "month": 5,
     "size": 3,
@@ -494,7 +494,7 @@ let data = [
     "source": "https://www.theguardian.com/environment/2012/sep/25/climate-change-windpower\nhttps://singularityhub.com/2017/08/23/why-empowering-women-is-the-best-way-to-solve-climate-change/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2032,
     "month": 11,
     "size": 4,
@@ -505,7 +505,7 @@ let data = [
     "source": "https://www.iucn.org/resources/issues-briefs/peatlands-and-climate-change",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2033,
     "month": 11,
     "size": 2,
@@ -516,7 +516,7 @@ let data = [
     "source": "https://aerofarms.com/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2033,
     "month": 9,
     "size": 1,
@@ -527,7 +527,7 @@ let data = [
     "source": "https://youtu.be/I2xDZlpInik",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2033,
     "month": 3,
     "size": 3,
@@ -538,7 +538,7 @@ let data = [
     "source": "https://www.fastcompany.com/90353282/76-major-companies-are-in-d-c-today-asking-congress-for-a-price-on-carbon",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2034,
     "month": 1,
     "size": 5,
@@ -549,7 +549,7 @@ let data = [
     "source": "https://www.vice.com/en_us/article/ne8amk/four-ways-the-climate-crisis-could-trigger-a-2008-style-economic-crash",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2034,
     "month": 1,
     "size": 3,
@@ -560,7 +560,7 @@ let data = [
     "source": "http://climatechange-theneweconomy.com/12291-2/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2035,
     "month": 11,
     "size": 2,
@@ -571,18 +571,18 @@ let data = [
     "source": "https://edition.cnn.com/2019/03/04/health/most-polluted-cities-india-china-intl/index.html",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2035,
     "month": "",
     "size": 5,
-    "default": false,
+    "default": true,
     "scenario": "act-Now",
     "cat": "Milestone",
     "title": "Atmospheric CO2 concentrations decline to 1995 levels.",
     "source": "https://www.bbc.com/news/science-environment-50504131?intlink_from_url=https://www.bbc.com/news/science_and_environment&link_location=live-reporting-story",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2035,
     "month": 4,
     "size": 4,
@@ -593,7 +593,7 @@ let data = [
     "source": "https://www.theguardian.com/business/2019/nov/17/saudi-aramco-valuation-falls-below-2tn-target",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2035,
     "month": 9,
     "size": 5,
@@ -604,7 +604,7 @@ let data = [
     "source": "https://rodaleinstitute.org/why-organic/organic-basics/regenerative-organic-agriculture/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2036,
     "month": 5,
     "size": 1,
@@ -615,7 +615,7 @@ let data = [
     "source": "https://www.rapidtransition.org/commentaries/zero-carbon-britain-rising-to-the-climate-emergency/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2036,
     "month": 8,
     "size": 2,
@@ -626,7 +626,7 @@ let data = [
     "source": "https://www.climatechangenews.com/2020/01/27/indigenous-lands-protected-areas-limit-amazons-carbon-emissions/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2037,
     "month": 8,
     "size": 2,
@@ -637,7 +637,7 @@ let data = [
     "source": "https://www.sustainablewebmanifesto.com/?fbclid=IwAR2jGkf17yqekH54ASEDf-TuY_KAlMBdc1ViA1aIynUathTIxrmGSm2kJzQ",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2037,
     "month": 10,
     "size": 3,
@@ -648,7 +648,7 @@ let data = [
     "source": "https://climateemergency.com/economics-emergency-mobilisation",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2037,
     "month": 3,
     "size": 4,
@@ -659,7 +659,7 @@ let data = [
     "source": "https://www.worldbank.org/en/topic/indigenouspeoples",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2038,
     "month": 6,
     "size": 3,
@@ -670,7 +670,7 @@ let data = [
     "source": "https://www.nature.org/en-us/what-we-do/our-insights/perspectives/restorative-aquaculture-for-nature-and-communities/?src=s%5Flio.gc.x.x.&sf110794522=1\nhttp://www.futuredirections.org.au/publication/fish-for-the-future-aquaculture-and-food-security/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2038,
     "month": 7,
     "size": 1,
@@ -681,7 +681,7 @@ let data = [
     "source": "https://www.bbc.com/news/election-2019-50578207?intlink_from_url=https://www.bbc.com/news/science_and_environment&link_location=live-reporting-story",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2039,
     "month": 9,
     "size": 3,
@@ -692,7 +692,7 @@ let data = [
     "source": "https://www.globalforestwatch.org/dashboards/global",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2039,
     "month": 1,
     "size": 5,
@@ -703,7 +703,7 @@ let data = [
     "source": "https://www.counterpunch.org/2019/12/06/permafrost-hits-a-grim-threshold/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2039,
     "month": 4,
     "size": 4,
@@ -714,7 +714,7 @@ let data = [
     "source": "https://fortune.com/2019/05/02/beyond-meat-ipo-stock-price/",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2040,
     "month": 1,
     "size": 5,
@@ -725,7 +725,7 @@ let data = [
     "source": "https://public.wmo.int/en/media/press-release/greenhouse-gas-concentrations-atmosphere-reach-yet-another-high",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 2040,
     "month": 5,
     "size": 3,
@@ -736,7 +736,7 @@ let data = [
     "source": "https://ec.europa.eu/environment/gpp/pdf/CP_European_Commission_Brochure_webversion_small.pdf",
     "Source Name": "European commission"
   },
-  {
+  { "id":1,
     "year": 2040,
     "month": 10,
     "size": 5,
@@ -747,7 +747,7 @@ let data = [
     "source": "http://geopoliticsofrenewables.org/Report",
     "Source Name": ""
   },
-  {
+  { "id":1,
     "year": 400000000,
     "month": 1,
     "size": 5,

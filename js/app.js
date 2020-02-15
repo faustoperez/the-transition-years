@@ -1,8 +1,13 @@
 const VEGA_SPEC = 'js/visualization.vg.json';
+
+const width = (document.getElementById('view').offsetWidth > 0
+  ? document.getElementById('view').offsetWidth
+  : document.getElementById('mainContent').offsetWidth);
+
 const DEFAULT_OPTIONS = {
   defaultStyle: false,
   renderer:"svg",
-  width: window.screen.width < 700? window.screen.width : 700,
+  width: width,
   height: 2000,
   actions: false,
   config: "js/config.json",
@@ -12,31 +17,35 @@ const DEFAULT_OPTIONS = {
 function renderList(list) {
   var $container = document.getElementById('mylist');
   var items = list.map(function(arr) {
-    return '<li><a href="' + arr.source + '" title="' + arr.title + '">' + (arr['Source Name'] || arr.title) + '</a></li>';
+    return '<li><a href="' + arr.source + '" title="' + arr.title + '" id='+arr.id +' >'
+      + (arr['Source Name'] || arr.title) 
+      + '</a></li>';
   });
   var tpl = '<ol>' + items.join('') + '</ol>';
-  
+
   $container.innerHTML = tpl;
 }
 
 
 function initalize() {
   // dom ready
-  const newData = data.map(function(d) {
-    return Object.assign(d, { title: d.title.match(/(([\w]+(?:[\W\n|\W\.|\W\,]+[\w\n|\w\.|\w\,]+){0,3})+)/g) });
+  data.map(function(d) {
+    return Object.assign(d, { id: (data.indexOf(d) + 1)});
   });
-
+  const newData = data.map(function(d) {
+    return  {...d, title: d.title.match(/(([\w]+(?:[\W\n|\W\.|\W\,]+[\w\n|\w\.|\w\,]+){0,3})+)/g)};
+  });
+   
   vegaEmbed('#view',VEGA_SPEC, DEFAULT_OPTIONS)
     .then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       result.view.insert('fiction',newData).runAsync();
       result.view.insert('backNormal',newData).runAsync();
       result.view.resize();
-//       result.view.addSignalListener('width', function(name, value) {
-//   console.log('WIDTH: ' + value);
-// });
-//       console.log(result.view)
-      
+      // result.view.addSignalListener('width', function(name, value) {
+      //   console.log('WIDTH VEGA SIGNAL:');
+      //   console.log('WIDTH: ' + value);
+      //   });      
     })
     .catch(console.error);
   
@@ -44,4 +53,3 @@ function initalize() {
 }
 
 document.addEventListener('DOMContentLoaded', initalize);
-console.log(window.screen)

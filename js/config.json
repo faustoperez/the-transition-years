@@ -1,4 +1,10 @@
 {
+  "events": {
+    "selector": true,
+    "defaults": {
+      "prevent": ["wheel"]
+    }
+  },
   "line": {"stroke": "#000000", "strokeOpacity": 1},
   "text": {"fill": "#000000", "fontSize": 14, "font":"Inter"},
   "symbol": {"fillOpacity": 0.8, "strokeOpacity": 1},

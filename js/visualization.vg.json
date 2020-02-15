@@ -17,7 +17,7 @@
           "force":true,
           "update": " item()"
         },
-        {"events": "@nodes:mouseout, @nodes:touchend", "update": "{}"}
+        {"events": "@nodes:mouseout", "update": "{}"}
       ]
     },
     {
@@ -250,7 +250,7 @@
               "strokeWidth": {"value": 1.5},
               "stroke": [
                 {
-                  "test": "datum.datum.default==true && !active.datum && windowOut",
+                  "test": "datum.datum.default==true  && width > 400 && !active.datum && windowOut",
                   "value": "#000"
                 },
                 {"value": "transparent"}
@@ -269,14 +269,14 @@
               "x": {"field": {"group": "width"}, "offset":20},
               "align": {"value": "left"},
               "baseline": {"value": "middle"},
-              "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut,datum.datum.title,'')"}
+              "text": {"signal": "if(datum.datum.default==true && width > 400 && !active.datum && windowOut,datum.datum.title,'')"}
             }
           }
         },
         {
           "type": "text",
           "name": "titles2",
-          "interactive": false,
+          "interactive": true,
           "from": {"data": "nodes"},
           "encode": {
             "update": {
@@ -285,8 +285,13 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(datum.datum.default==true && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
-              "fill": {"value": "#000"}
+              "text": {"signal": "if(datum.datum.default==true && width > 400 && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
+              "href":{"signal": "'#'+ datum.datum.id"},
+              "cursor":{"value": "pointer"},
+              "fill":{"value":"black"}
+            },
+            "hover": {
+              "fill":{"value":"red"}
             }
           }
         },
@@ -301,7 +306,7 @@
               "strokeWidth": {"value": 1.5},
               "stroke": [
                 {
-                  "test": "active.datum",
+                  "test": "active.datum  && width > 400",
                   "value": "#000"
                 },
                 {"value": "transparent"}
@@ -320,14 +325,14 @@
               "align": {"value": "left"},
               "baseline": {"value": "middle"},
               "lineBreak": {"value": "\n"},
-              "text": {"signal": "if(active.datum,active.datum.title,'')"}
+              "text": {"signal": "if(active.datum  && width > 400,active.datum.title,'')"}
             }
           }
         },
         {
           "type": "text",
           "name": "titles",
-          "interactive": false,
+          "interactive": true,
           "encode": {
             "update": {
               "y": {"signal": "active.y + yTextOffset"},
@@ -335,7 +340,13 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(active.datum,active.datum.year + ' / +' + active.datum.value + ' ºC','')"}
+              "text": {"signal": "if(active.datum && width > 400, active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
+              "href":{"signal": "if(active.datum, '#'+ active.datum.id,'')"},
+              "cursor":{"value": "pointer"},
+              "fill":{"value":"black"}
+            },
+            "hover": {
+              "fill":{"value":"red"}
             }
           }
         }
@@ -353,7 +364,7 @@
         }
       },
       "axes": [
-    {"orient": "left", "scale": "y2", "format": ",.2r", "tickCount": 1, "bandPosition":1, "labelFontWeight":"bold"}],
+    {"orient": "left", "scale": "y2", "format": {"signal":"if(width > 400,',.2r','.3s')"}, "tickCount": 1, "bandPosition":1, "labelFontWeight":"bold"}],
       "marks": [
         {
           "type": "rule",
@@ -365,7 +376,8 @@
               "y": {"field": "year", "scale":"y2"},
               "x2": {"field": {"group": "width"},"offset":6},
               "strokeWidth": {"value": 1.5},
-              "stroke":{"value": "#000"}
+              "stroke":{"value": "#000"},
+              "strokeOpacity":{"signal": "if(width > 400,1,0)"}
             
             }
           }
@@ -381,14 +393,14 @@
               "x": {"field": {"group": "width"}, "offset":20},
               "align": {"value": "left"},
               "baseline": {"value": "middle"},
-              "text": {"signal": "datum.title"}
+              "text": {"signal": "if(width > 400,datum.title,'')"}
             }
           }
         },
         {
           "type": "text",
           "name": "titles-b2",
-          "interactive": false,
+          "interactive": true,
           "from": {"data": "backNormal"},
           "encode": {
             "update": {
@@ -397,7 +409,13 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "format(datum.year, ',.2r')+' BC'"}
+              "text": {"signal": "if(width > 400,format(datum.year, ',.2r')+' BC ('+datum.id+')','')"},
+              "href":{"signal": "'#'+datum.id"},
+              "cursor":{"value": "pointer"},
+              "fill":{"value":"black"}
+            },
+            "hover": {
+              "fill":{"value":"red"}
             }
           }
         }
