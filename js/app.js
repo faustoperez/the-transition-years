@@ -1,19 +1,5 @@
 const VEGA_SPEC = 'js/visualization.vg.json';
 
-const width = (document.getElementById('view').offsetWidth > 0
-  ? document.getElementById('view').offsetWidth
-  : document.getElementById('mainContent').offsetWidth);
-
-const DEFAULT_OPTIONS = {
-  defaultStyle: false,
-  renderer:"svg",
-  width: width,
-  height: 2000,
-  actions: false,
-  config: "js/config.json",
-  tooltip: {theme: 'dark'}
-};
-
 function renderList(list) {
   var $container = document.getElementById('mylist');
   var items = list.map(function(arr) {
@@ -26,8 +12,24 @@ function renderList(list) {
   $container.innerHTML = tpl;
 }
 
-
 function initalize() {
+  const $view = document.getElementById('view');
+  const $mainContent = document.getElementById('mainContent');
+  const $mainLegend = document.getElementById('mainLegend');
+  const width = ($view.offsetWidth > 0 && $mainContent.offsetWidth !== $mainLegend.offsetWidth)
+  ? $view.offsetWidth
+  : $mainLegend.offsetWidth;
+
+  const DEFAULT_OPTIONS = {
+    defaultStyle: false,
+    renderer:"svg",
+    width: width,
+    height: 2000,
+    actions: false,
+    config: "js/config.json",
+    tooltip: {theme: 'dark'}
+  };
+
   // dom ready
   data.map(function(d) {
     return Object.assign(d, { id: (data.indexOf(d) + 1)});
@@ -39,13 +41,13 @@ function initalize() {
   vegaEmbed('#view',VEGA_SPEC, DEFAULT_OPTIONS)
     .then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-      result.view.insert('fiction',newData).runAsync();
-      result.view.insert('backNormal',newData).runAsync();
+      result.view.insert('fiction',newData).run();
+      result.view.insert('backNormal',newData).run();
       result.view.resize();
-       result.view.addSignalListener('width', function(name, value) {
-         console.log('WIDTH VEGA SIGNAL:');
-         console.log('WIDTH: ' + value);
-         });      
+
+      result.view.addSignalListener('sizeTest', function(name, value) {
+        console.log('DEBUG >> ', name, value)
+      });
     })
     .catch(console.error);
   

@@ -242,6 +242,7 @@ main {
     border-top: 3px solid var(--text-color);
     margin-left: 5%;
     flex: 1;
+    padding-top: 25px;
 }
 
 footer {
@@ -347,6 +348,7 @@ footer h2 {
 
     #view {
         margin-left: 0;
+        padding-top: 50px;
     }
 }
 
