@@ -75,7 +75,7 @@ p {
 }
 
 header h1 {
-    font-family: 'Baskerville', Georgia, serif;
+    font-family: 'Baskerville', serif;
     font-size: 140px;
     line-height: 0.75;
     text-align: center;
@@ -250,7 +250,7 @@ footer {
 }
 
 footer h2 {
-    font-family: 'Baskerville', Georgia, serif;
+    font-family: 'Baskerville', serif;
     font-size: 80px;
     line-height: 1;
 }
@@ -287,8 +287,10 @@ footer h2 {
     vertical-align: top;
 }
 
-.references a:hover {
+.references a:hover,
+.references a:focus {
     background-color: var(--white);
+    outline: none;
 }
 
 .subfooter {
