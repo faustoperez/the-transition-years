@@ -368,7 +368,6 @@
               "x": {"field": {"group": "width"}, "offset":20},
               "align": {"value": "left"},
               "baseline": {"value": "middle"},
-              "lineBreak": {"value": "\n"},
               "text": {"signal": "if(active.datum  && sizeTest, active.datum.title,'')"}
             }
           }
@@ -401,9 +400,9 @@
             "encode": {
             "update": {
               "y": {"signal":"if(active.datum, datum.bounds.y1-5, 0)"},
-              "x": {"signal":"if(active.datum, datum.bounds.x2-(12.5*length(toString(active.datum.id))),0)"},
+              "x": {"signal":"if(active.datum, datum.bounds.x2-(14*length(toString(active.datum.id)))-4.5,0)"},
               "y2": {"signal":"if(active.datum, datum.bounds.y2,0)"},
-              "x2": {"signal":"if(active.datum, datum.bounds.x2-5,0)"},
+              "x2": {"signal":"if(active.datum, datum.bounds.x2,0)"},
             "opacity":[{"test":"hoverText && sizeTest","value":1},{"value":0}],
             "fill":{"value": "#FFE400"}
             }
@@ -419,11 +418,11 @@
             "encode": {
               "update": {
                 "y": {"signal":"if(active.datum, datum.bounds.y1,0)"},
-              "x": {"signal":"if(active.datum, datum.bounds.x2-(7.5*length(toString(active.datum.id))),0)"},
+                "x": {"signal":"if(active.datum, datum.bounds.x2-(7*length(toString(active.datum.id))),0)"},
                 "fontWeight":{"value": "bold"},
                 "align": {"value": "center"},
                 "baseline": {"value": "top"},
-                "text": {"signal": "if(active.datum, active.datum.id,'')"},
+                "text": {"signal": "if(active.datum, '('+active.datum.id+')','')"},
                 "href":{"signal": "if(active.datum, '#'+active.datum.id,'')"},
                 "cursor":{"value": "pointer"},
                 "opacity":[{"test":"hoverText && sizeTest","value":1},{"value":0}],
