@@ -12,7 +12,21 @@ function renderList(list) {
   $container.innerHTML = tpl;
 }
 
+function renderLegend(signalObject) {
+  
+  var $tooltip = document.getElementById('chartTooltip');
+  
+  var tpl = '<h1>' + signalObject.datum.year + ' / '+ signalObject.datum.value 
+          +' ºC ( <a href=#'+ signalObject.datum.id +'>'+ signalObject.datum.id +'</a>)</h1>' 
+          + '<p><br>' + signalObject.datum.title.join(' ') + '</br></p>'
+
+  $tooltip.innerHTML = tpl;
+
+}
+
 function initalize() {
+  // dom ready
+
   const $view = document.getElementById('view');
   const $mainContent = document.getElementById('mainContent');
   const $mainLegend = document.getElementById('mainLegend');
@@ -20,17 +34,17 @@ function initalize() {
   ? $view.offsetWidth
   : $mainLegend.offsetWidth;
 
+  console.log('DEBUG >> ', 'width', width);
   const DEFAULT_OPTIONS = {
     defaultStyle: false,
     renderer:"svg",
     width: width,
     height: 2000,
     actions: false,
-    config: "js/config.json",
-    tooltip: {theme: 'dark'}
+    config: "js/config.json"
   };
 
-  // dom ready
+  
   data.map(function(d) {
     return Object.assign(d, { id: (data.indexOf(d) + 1)});
   });
@@ -44,9 +58,15 @@ function initalize() {
       result.view.insert('fiction',newData).run();
       result.view.insert('backNormal',newData).run();
       result.view.resize();
+      
+      console.log(result.view._runtime.subcontext[0].data)
+      result.view.addSignalListener('active', function(name, value) {
+        console.log('DEBUG >> ', name, value);
+        console.log('DEBUG >> ', 'width', width);
+        if ( (value && width < 450) ){
+            renderLegend(value);
+        };
 
-      result.view.addSignalListener('sizeTest', function(name, value) {
-        console.log('DEBUG >> ', name, value)
       });
     })
     .catch(console.error);

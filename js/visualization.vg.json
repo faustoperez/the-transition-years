@@ -22,17 +22,22 @@
         {
           "events": "@nodes:mouseover, @nodes:touchstart, @nodes:click",
           "force":true,
-          "update": " item()"
-        },
-        {"events": "@nodes:mouseout", "update": "{}"}
+          "update": "item()"
+        }
       ]
     },
     {
       "name": "windowOut",
       "value": "true",
       "on": [
-        {"events": "@nodes:mouseout, view:mouseout", "update": "true"},
         {"events": "@nodes:mouseover, @nodes:touchstart, @nodes:click", "update": "false"}
+      ]
+    },
+    {
+      "name": "hoverText",
+      "value": "false",
+      "on": [
+        {"events": "@titles-b2:mouseover, @titles:mouseover", "update": "true"}
       ]
     }
   ],
@@ -215,13 +220,8 @@
               "yfocus": {"scale": "yscale", "field": "year"},
               "xfocus": {"scale": "xscale", "field": "value"},
               "stroke": {"value": "#000"},
-              "strokeWidth": [{"test": "datum.default && windowOut","value": 3}, {"value":0}],
-              "zindex": {"value": 2}
-            },
-            "hover": {
-              "stroke": {"value": "#000"},
-              "strokeWidth": {"value": 3},
-              "zindex": {"value": 3}
+              "strokeWidth": [{"test": "(datum.default && windowOut)","value": 3},{"test": "if(active.datum, (!windowOut && active.datum.id==datum.id),false)","value": 3}, {"value":0}],
+              "zindex": [{"test": "(datum.default && windowOut)","value": 3},{"test": "if(active.datum, (!windowOut && active.datum.id==datum.id),false)","value": 3}, {"value":2}]
             }
           },
           "transform": [
@@ -292,16 +292,53 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC','')"},
+              "text": {"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC ('+ datum.datum.id +')','')"},
               "href":{"signal": "'#'+ datum.datum.id"},
               "cursor":{"value": "pointer"},
               "fill":{"value":"black"}
-            },
-            "hover": {
-              "fill":{"value":"red"}
             }
           }
         },
+        {
+          "type": "rect",
+          "name": "titles2-ref",
+          "from": {
+            "data": "titles2"
+            },
+          "encode": {
+          "update": {
+            "y": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y1-5,0)"},
+            "x": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-(12.5*length(toString(datum.datum.id))),0)"},
+            "y2": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y2,0)"},
+            "x2": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-5,0)"},
+          "opacity":[{"test":"!hoverText && datum.datum.default==true && sizeTest && !active.datum && windowOut","value":1},{"value":0}],
+          "fill":{"value": "#FFE400"}
+          }
+        }
+      },
+        {
+          "type": "text",
+          "name": "titles2-ref-text",
+          "from": {
+            "data": "titles2"
+            },
+          "interactive": true,
+          "encode": {
+            "update": {
+              "y": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.bounds.y1,0)"},
+              "x": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.bounds.x2-(7.5*length(toString(datum.datum.id))),0)"},
+              "fontWeight":{"value": "bold"},
+              "align": {"value": "center"},
+              "baseline": {"value": "top"},
+              "text": {"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.datum.id,'')"},
+              "href":{"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut,'#'+datum.datum.id,'')"},
+              "cursor":{"value": "pointer"},
+              "opacity":[{"test":"!hoverText && datum.datum.default==true && sizeTest && !active.datum && windowOut","value":1},{"value":0}],
+              "fill":{"value":"black"}
+            }
+          }
+        
+      },
         {
           "type": "rule",
           "name": "line",
@@ -339,7 +376,7 @@
         {
           "type": "text",
           "name": "titles",
-          "interactive": true,
+          "interactive": false,
           "encode": {
             "update": {
               "y": {"signal": "active.y + yTextOffset"},
@@ -347,15 +384,53 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(active.datum && sizeTest, active.datum.year + ' / +' + active.datum.value + ' ºC','')"},
-              "href":{"signal": "if(active.datum, '#'+ active.datum.id,'')"},
-              "cursor":{"value": "pointer"},
+              "text": {"signal": "if(active.datum && sizeTest, active.datum.year + ' / +' + active.datum.value + ' ºC ('+ active.datum.id +')','')"},
               "fill":{"value":"black"}
             },
             "hover": {
               "fill":{"value":"red"}
             }
           }
+        },
+          {
+            "type": "rect",
+            "name": "titles-ref",
+            "from": {
+              "data": "titles"
+              },
+            "encode": {
+            "update": {
+              "y": {"signal":"if(active.datum, datum.bounds.y1-5, 0)"},
+              "x": {"signal":"if(active.datum, datum.bounds.x2-(12.5*length(toString(active.datum.id))),0)"},
+              "y2": {"signal":"if(active.datum, datum.bounds.y2,0)"},
+              "x2": {"signal":"if(active.datum, datum.bounds.x2-5,0)"},
+            "opacity":[{"test":"hoverText && sizeTest","value":1},{"value":0}],
+            "fill":{"value": "#FFE400"}
+            }
+          }
+        },
+          {
+            "type": "text",
+            "name": "titles-ref-text",
+            "from": {
+              "data": "titles"
+              },
+            "interactive": true,
+            "encode": {
+              "update": {
+                "y": {"signal":"if(active.datum, datum.bounds.y1,0)"},
+              "x": {"signal":"if(active.datum, datum.bounds.x2-(7.5*length(toString(active.datum.id))),0)"},
+                "fontWeight":{"value": "bold"},
+                "align": {"value": "center"},
+                "baseline": {"value": "top"},
+                "text": {"signal": "if(active.datum, active.datum.id,'')"},
+                "href":{"signal": "if(active.datum, '#'+active.datum.id,'')"},
+                "cursor":{"value": "pointer"},
+                "opacity":[{"test":"hoverText && sizeTest","value":1},{"value":0}],
+                "fill":{"value":"black"}
+              }
+            }
+          
         }
       ]
     },
@@ -371,7 +446,7 @@
         }
       },
       "axes": [
-    {"orient": "left", "scale": "y2", "format": {"signal":"if(sizeTest,',.2r','.3s')"}, "tickCount": 1, "bandPosition":1, "labelFontWeight":"bold"}],
+    {"orient": "left", "scale": "y2", "format": {"signal":"'.3s'"}, "tickCount": 1, "bandPosition":1, "labelFontWeight":"bold"}],
       "marks": [
         {
           "type": "rule",
@@ -404,28 +479,64 @@
             }
           }
         },
-        {
-          "type": "text",
-          "name": "titles-b2",
-          "interactive": true,
-          "from": {"data": "backNormal"},
-          "encode": {
-            "update": {
-              "y": {"field": "year", "scale":"y2", "offset":{"signal":"yTextOffset"}},
-              "x": {"field": {"group": "width"}, "offset":20},
-              "fontWeight":{"value": "bold"},
-              "align": {"value": "left"},
-              "baseline": {"value": "top"},
-              "text": {"signal": "if(sizeTest,format(datum.year, ',.2r')+' BC ('+datum.id+')','')"},
-              "href":{"signal": "'#'+datum.id"},
-              "cursor":{"value": "pointer"},
-              "fill":{"value":"black"}
+          {
+            "type": "text",
+            "name": "titles-b2",
+            "interactive": false,
+            "from": {"data": "backNormal"},
+            "encode": {
+              "update": {
+                "y": {"field": "year", "scale":"y2", "offset":{"signal":"yTextOffset"}},
+                "x": {"field": {"group": "width"}, "offset":20},
+                "fontWeight":{"value": "bold"},
+                "align": {"value": "left"},
+                "baseline": {"value": "top"},
+                "text": {"signal": "if(sizeTest,format(datum.year, ',.2r')+' BC ('+ datum.id +')','')"},
+                "fill":{"value":"black"}
+              }
+            }
+          },
+          {
+            "type": "rect",
+            "name": "titles-b2-ref",
+            "from": {
+            "data": "titles-b2"
             },
-            "hover": {
-              "fill":{"value":"red"}
+            "encode": {
+            "update": {
+              "y": {"signal":"datum.bounds.y1-5"},
+              "x": {"signal":"datum.bounds.x2-(12.5*length(toString(datum.datum.id)))"},
+              "y2": {"signal":"datum.bounds.y2"},
+              "x2": {"signal":"datum.bounds.x2-5"},
+            "opacity":[{"test":"hoverText && sizeTest","value":1},{"value":0}],
+            "fill":{"value": "#FFE400"}
             }
           }
+        },
+          {
+            "type": "text",
+            "name": "titles-b2-ref-text",
+            "from": {
+              "data": "titles-b2"
+              },
+            "interactive": true,
+            "encode": {
+              "update": {
+                "y": {"signal":"datum.bounds.y1"},
+              "x": {"signal":"datum.bounds.x2-(7.5*length(toString(datum.datum.id)))"},
+                "fontWeight":{"value": "bold"},
+                "align": {"value": "center"},
+                "baseline": {"value": "top"},
+                "text": {"signal": "datum.datum.id"},
+                "href":{"signal": "'#'+datum.datum.id"},
+                "cursor":{"value": "pointer"},
+                "opacity":[{"test":"hoverText && sizeTest","value":1},{"value":0}],
+                "fill":{"value":"black"}
+              }
+            }
+          
         }
+         
       ]      
     }
   ]

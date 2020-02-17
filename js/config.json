@@ -38,7 +38,7 @@
     "labelFontWeight":"bold",
     "titlePadding": 50,
     "titleAlign": "right",
-    "titleX": 200
+    "titleX": 150
     
   },
   "axisY": {"ticks": true, "labelPadding": 10, "tickOffset": 0, "tickExtra":false, "labelFontWeight":"normal"},

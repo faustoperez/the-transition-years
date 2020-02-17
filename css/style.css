@@ -237,8 +237,7 @@ main {
     display: flex;
     padding-bottom: 50px;
 }
-
-#view {
+#mainChart {
     border-top: 3px solid var(--text-color);
     margin-left: 5%;
     flex: 1;
@@ -345,8 +344,7 @@ footer h2 {
     .legend div {
         width: 45%;
     }
-
-    #view {
+    #mainChart {
         margin-left: 0;
         padding-top: 50px;
     }
@@ -394,5 +392,45 @@ footer h2 {
     .legend div {
         width: 100%;
     }
-
+    #chartTooltip {
+        width: 100%; 
+        position: sticky;
+        position: -webkit-sticky;
+        bottom: 0;
+        padding: 10px;
+        margin: 0;
+        background-color: var(--white);
+        background: var(--background);
+        /* border-style: solid; */
+        /* border-width: 1px; */
+        
+    } 
+    #chartTooltip h1 {
+        font-size: 14px;
+        line-height: 1;
+        text-align: left;
+        margin: 0 0 0 0;
+        font-weight: bold;
+        color: var(--text-color);
+    }
+    #chartTooltip p {
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: left;
+        margin: 0 0 0 0;
+        color: var(--text-color);
+    }
+    #chartTooltip a {
+        /* vertical-align: top; */
+        color: var(--text-color);
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: left;
+        margin: 0 0 0 0;
+        background-color: var(--accent)
+    }
+    
+    #chartTooltip a:touch-action {
+        background-color: var(--accent);
+    }
 }
