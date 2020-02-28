@@ -429,7 +429,7 @@ let data = [
     "default": false,
     "scenario": "act-Now",
     "cat": "Political",
-    "title": "Nineteen Asian and European countries passed laws to clean up chemicals in refrigerators and air conditioners already in circulation, a measure similar to taking 629 million cars off the roads",
+    "title": "Nineteen Asian and European countries passed laws to clean up chemicals in refrigerators and air conditioners already in circulation, a measure similar to taking 629 million cars off the roads.",
     "source": "https://www.drawdown.org/solutions/materials/refrigerant-management",
     "Source Name": "Refrigerant Management. Project Drawdown."
   },

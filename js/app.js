@@ -49,7 +49,9 @@ function initalize() {
     return Object.assign(d, { id: (data.indexOf(d) + 1)});
   });
   const newData = data.map(function(d) {
-    return  {...d, title: d.title.match(/(([\w]+(?:[\W\n|\W\.|\W\,]+[\w\n|\w\.|\w\,]+){0,3})+)/g)};
+    // return  {...d, title: d.title.match(/(([\w]+(?:[\W\n|\W\.|\W\,]+[\w\n|\w\.|\w\,]+){0,3})+)/g)};
+    return  {...d, title: d.title.match(/((\w+\W+){0,4})/g)};
+    
   });
    
   vegaEmbed('#view',VEGA_SPEC, DEFAULT_OPTIONS)
