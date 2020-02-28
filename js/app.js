@@ -17,7 +17,7 @@ function renderLegend(signalObject) {
   var $tooltip = document.getElementById('chartTooltip');
   
   var tpl = '<h1>' + signalObject.datum.year + ' / '+ signalObject.datum.value 
-          +' ºC ( <a href=#'+ signalObject.datum.id +'>'+ signalObject.datum.id +'</a>)</h1>' 
+          +' ºC (<a href=#'+ signalObject.datum.id +'>'+ signalObject.datum.id +'</a>)</h1>' 
           + '<p><br>' + signalObject.datum.title.join(' ') + '</br></p>'
 
   $tooltip.innerHTML = tpl;
