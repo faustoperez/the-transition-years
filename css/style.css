@@ -243,7 +243,7 @@ main {
     flex: 1;
     padding-top: 25px;
 }
-.marks g.nodes  path {
+g.mark-symbol.role-mark.nodes  path {
     mix-blend-mode: darken;
 }
 footer {

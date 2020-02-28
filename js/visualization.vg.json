@@ -293,8 +293,6 @@
               "align": {"value": "left"},
               "baseline": {"value": "top"},
               "text": {"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC ('+ datum.datum.id +')','')"},
-              "href":{"signal": "'#'+ datum.datum.id"},
-              "cursor":{"value": "pointer"},
               "fill":{"value":"black"}
             }
           }
@@ -307,11 +305,11 @@
             },
           "encode": {
           "update": {
-            "y": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y1-5,0)"},
-            "x": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-(12.5*length(toString(datum.datum.id))),0)"},
-            "y2": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y2,0)"},
-            "x2": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-5,0)"},
-          "opacity":[{"test":"!hoverText && datum.datum.default==true && sizeTest && !active.datum && windowOut","value":1},{"value":0}],
+            "y": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y1-5,0)"},
+            "x": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-(12.5*length(toString(datum.datum.datum.id))),0)"},
+            "y2": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y2,0)"},
+            "x2": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-5,0)"},
+          "opacity":[{"test":"datum.datum.datum.default==true && sizeTest && !active.datum && windowOut","value":1},{"value":0}],
           "fill":{"value": "#FFE400"}
           }
         }
@@ -325,15 +323,15 @@
           "interactive": true,
           "encode": {
             "update": {
-              "y": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.bounds.y1,0)"},
-              "x": {"signal":"if(datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.bounds.x2-(7.5*length(toString(datum.datum.id))),0)"},
+              "y": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.bounds.y1,0)"},
+              "x": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.bounds.x2-(7.48*length(toString(datum.datum.datum.id))),0)"},
               "fontWeight":{"value": "bold"},
               "align": {"value": "center"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.datum.id,'')"},
-              "href":{"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut,'#'+datum.datum.id,'')"},
+              "text": {"signal": "if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut,datum.datum.datum.id,'')"},
+              "href":{"signal": "if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut,'#'+datum.datum.datum.id,'')"},
               "cursor":{"value": "pointer"},
-              "opacity":[{"test":"!hoverText && datum.datum.default==true && sizeTest && !active.datum && windowOut","value":1},{"value":0}],
+              "opacity":[{"test":"datum.datum.datum.default==true && sizeTest && !active.datum && windowOut","value":1},{"value":0}],
               "fill":{"value":"black"}
             }
           }

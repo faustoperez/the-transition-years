@@ -34,7 +34,7 @@ function initalize() {
   ? $view.offsetWidth
   : $mainLegend.offsetWidth;
 
-  console.log('DEBUG >> ', 'width', width);
+  
   const DEFAULT_OPTIONS = {
     defaultStyle: false,
     renderer:"svg",
@@ -58,11 +58,8 @@ function initalize() {
       result.view.insert('fiction',newData).run();
       result.view.insert('backNormal',newData).run();
       result.view.resize();
-      
-      console.log(result.view._runtime.subcontext[0].data)
+      console.log('DEBUG >> ', 'view', result.view._runtime);
       result.view.addSignalListener('active', function(name, value) {
-        console.log('DEBUG >> ', name, value);
-        console.log('DEBUG >> ', 'width', width);
         if ( (value && width < 450) ){
             renderLegend(value);
         };
