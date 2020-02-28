@@ -3,7 +3,7 @@ const VEGA_SPEC = 'js/visualization.vg.json';
 function renderList(list) {
   var $container = document.getElementById('mylist');
   var items = list.map(function(arr) {
-    return '<li><a href="' + arr.source + '" title="' + arr.title + '" id='+arr.id +' >'
+    return '<li><a href="' + arr.source + '" title="' + arr.title + '" id='+arr.id +' target="_blank">'
       + (arr['Source Name'] || arr.title) 
       + '</a></li>';
   });
