@@ -129,13 +129,24 @@ h2 {
 }
 
 h3 {
-    margin-top: 24px;
-    margin-bottom: 40px;
+    margin-top: 48px;
+    margin-bottom: 36px;
     line-height: 1.2;
     font-size: 18px;
     font-weight: 600;
     color: var(--text-color);
 }
+
+.legend div:first-child h3 {
+    margin-top: 24px;
+}
+
+.legend div:last-child h3 {
+    margin-top: 48px;
+    margin-bottom: 0;
+}
+
+
 
 main {
     display: flex;
@@ -153,7 +164,7 @@ main {
 }
 
 .legend-bubbles {
-    margin-bottom: 60px;
+    margin-bottom: 48px;
 }
 
 .legend-bubbles span {
