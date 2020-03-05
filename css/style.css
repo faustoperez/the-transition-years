@@ -74,12 +74,15 @@ p {
     margin: 0 auto;
 }
 
+header {
+    padding-bottom: 80px;
+}
+
 header h1 {
     font-family: 'Baskerville', serif;
-    font-size: 140px;
+    font-size: 120px;
     line-height: 0.75;
     text-align: center;
-    max-width: 800px;
     margin: 96px auto 0 auto;
 }
 
@@ -112,10 +115,13 @@ header h2:after {
 }
 
 header p {
-    font-size: 22px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+header p:first-of-type {
+    font-size: 24px;
+    margin-bottom: 36px;
 }
 
 header p a {
@@ -244,7 +250,7 @@ main {
 
 #mainContent {
     display: flex;
-    padding-bottom: 50px;
+    padding-bottom: 120px;
 }
 #mainChart {
     border-top: 3px solid var(--text-color);
@@ -257,28 +263,14 @@ g.mark-symbol.role-mark.nodes  path {
 }
 footer {
     background-color: var(--accent);
-    padding-bottom: 60px;
+    padding: 120px 0;
 }
 
 footer h2 {
     font-family: 'Baskerville', serif;
     font-size: 80px;
     line-height: 1;
-}
-
-.about {
-    margin-top: 60px;
-    padding-top: 60px;
-}
-
-.about p {
-    column-count: 2;
-    column-gap: 80px;
-    font-size: 18px;
-}
-
-.references {
-    margin-top: 80px;
+    padding-bottom: 20px;
 }
 
 .references ol {
@@ -365,16 +357,24 @@ footer h2 {
 
 @media screen and (max-width: 800px) {
 
+    header {
+        padding-bottom: 40px;
+    }
+
     header h1 {
-        font-size: 80px;
+        font-size: 96px;
     }
 
     header h2, h3 {
         font-size: 16px;
     }
 
-    header p {
+    header p:first-of-type {
         font-size: 18px;
+    }
+
+    header p {
+        font-size: 15px;
     }
 
     footer h2 {
