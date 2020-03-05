@@ -377,6 +377,14 @@ footer h2 {
         font-size: 15px;
     }
 
+    #mainContent {
+        padding-bottom: 60px;
+    }
+
+    footer {
+        padding: 60px 0;
+    }
+
     footer h2 {
         font-size: 64px;
     }
