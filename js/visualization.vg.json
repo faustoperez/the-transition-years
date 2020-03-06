@@ -292,7 +292,7 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.datum.year + ' / +' + datum.datum.value + ' ºC ('+ datum.datum.id +')','')"},
+              "text": {"signal": "if(datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.datum.year + ' ('+ datum.datum.id +')','')"},
               "fill":{"value":"black"}
             }
           }
@@ -306,7 +306,7 @@
           "encode": {
           "update": {
             "y": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y1-5,0)"},
-            "x": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-(12.5*length(toString(datum.datum.datum.id))),0)"},
+            "x": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-(13*length(toString(datum.datum.datum.id)))+2,0)"},
             "y2": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.y2,0)"},
             "x2": {"signal":"if(datum.datum.datum.default==true && sizeTest && !active.datum && windowOut, datum.bounds.x2-5,0)"},
           "opacity":[{"test":"datum.datum.datum.default==true && sizeTest && !active.datum && windowOut","value":1},{"value":0}],
@@ -381,7 +381,7 @@
               "fontWeight":{"value": "bold"},
               "align": {"value": "left"},
               "baseline": {"value": "top"},
-              "text": {"signal": "if(active.datum && sizeTest, active.datum.year + ' / +' + active.datum.value + ' ºC ('+ active.datum.id +')','')"},
+              "text": {"signal": "if(active.datum && sizeTest, active.datum.year + ' ('+ active.datum.id +')','')"},
               "fill":{"value":"black"}
             },
             "hover": {
@@ -398,7 +398,7 @@
             "encode": {
             "update": {
               "y": {"signal":"if(active.datum, datum.bounds.y1-5, 0)"},
-              "x": {"signal":"if(active.datum, datum.bounds.x2-(14*length(toString(active.datum.id)))-4.5,0)"},
+              "x": {"signal":"if(active.datum, datum.bounds.x2-(13*length(toString(active.datum.id)))-5,0)"},
               "y2": {"signal":"if(active.datum, datum.bounds.y2,0)"},
               "x2": {"signal":"if(active.datum, datum.bounds.x2,0)"},
             "opacity":[{"test":"hoverText && sizeTest","value":1},{"value":0}],
@@ -488,7 +488,7 @@
                 "fontWeight":{"value": "bold"},
                 "align": {"value": "left"},
                 "baseline": {"value": "top"},
-                "text": {"signal": "if(sizeTest,format(datum.year, ',.2r')+' BC ('+ datum.id +')','')"},
+                "text": {"signal": "if(sizeTest,'Year ' + format(datum.year, ',.2s')+' ('+ datum.id +')','')"},
                 "fill":{"value":"black"}
               }
             }
