@@ -4,143 +4,85 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6363508-19"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-6363508-19');
+		</script>
+
+		<meta property="og:title" content="The Transition Years">
+		<meta property="og:description" content="How humanity changed its emissions trajectory and tackled climate change, one small victory at a time. A science and fiction chart by Vizzuality.">
+		<meta property="og:image" content="https://vizzuality.github.io/the-transition-years/img/card-social.png">
+		<meta property="og:url" content="https://vizzuality.github.io/the-transition-years/">
+		<meta property="og:site_name" content="Vizzuality">
+
+
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@Vizzuality">
+		<meta name="twitter:creator" content="@Vizzuality">
+		<meta name="twitter:title" content="The Transition Years">
+		<meta name="twitter:description" content="How humanity changed its emissions trajectory and tackled climate change, one small victory at a time. A science and fiction chart by Vizzuality.">
+		<meta name="twitter:image" content="https://vizzuality.github.io/the-transition-years/img/card-social.png">
+		<meta name="twitter:image:alt" content="The Transition Years">
+
 		<title>The Transition Years</title>
-		<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+		<meta name="description" content="How humanity changed its emissions trajectory and tackled climate change, one small victory at a time. A science and fiction chart by Vizzuality.">
+		<script src="https://cdn.jsdelivr.net/npm/vega@5" defer="true"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@3" defer="true"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@5" defer="true"></script>
+		<script src="https://d3js.org/d3.v5.min.js"  defer="true"></script>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
 	</head>
 	<body>
-		<header class="container">
-			<h1>The transition years.</h1>
-			<h2>(2020 to 2040).</h2>
-			<!-- <p>How humanity changed its emissions trajectory and tackled climate change, one small victory at a time. A science and fiction chart by <a href="https://www.vizzuality.com/">vizzuality</a>.</p> -->
-			<p>How humanity changed its emissions trajectory and tackled climate change, one small victory at a time. A science and fiction chart by <a href="#">a cool company</a>.</p>
-		</header>
-		<main class="container">
-			<div class="legend">
-				<div>
-					<h3>Type of change</h3>
-					<ul class="legend-bubbles">
-						<li><span class="politics"></span>Politics</li>
-						<li><span class="energy"></span>Energy</li>
-						<li><span class="social"></span>Social</li>
-						<li><span class="technology"></span>Technology</li>
-						<li><span class="science"></span>Science</li>
-					</ul>
+		<section class="wrapper">
+			<header class="container">
+				<h1>The transition years.</h1>
+				<h2>(2020 to 2040)</h2>
+				<p>How humanity changed its emissions trajectory and tackled climate change, one small victory at a time. A science and fiction chart by <a href="https://www.vizzuality.com/" title="Vizzuality" target="_blank" onclick="gtag('event', 'click on Vizzuality website (top)')">Vizzuality</a>.</p>
+				<p>What will our future look like in the context of global change? What actions can slow the trend of rising temperatures? We gathered evidence of global efforts to mitigate the effects of climate change. From grassroots initiatives to corporate and government actions, we used these acts to build an imagined timeline that depicts the collective positive impacts of climate action. The optimistic scenario resulting from our experiment gives insight into how to end the climate emergency.</p>
+			</header>
+			<main class="container" id="mainContent">
+				<div class="legend" id="mainLegend">
+					<div>
+						<h3>Type of effort</h3>
+						<ul class="legend-bubbles">
+							<li><div class="milestone"></div>Milestone</li>
+							<li><span class="politics"></span>Politics</li>
+							<li><span class="energy"></span>Energy</li>
+							<li><span class="social"></span>Social</li>
+							<li><span class="technology"></span>Technology</li>
+							<li><span class="science"></span>Science</li>
+							<li><span class="economy"></span>Economy</li>
+
+						</ul>
+					</div>
+					<div>
+						<h3>Estimated impact in stabilising temperature trends</h3>
+						<img src="img/legend-size.svg" alt="Legend bubble size">
+					</div>
+					<div>
+						<h3>Note:</h3><p>Globally averaged temperature anomalies from <a href="http://www.ipcc-data.org/sim/gcm_global/index.html" target="_blank">AR4 multi-model</a> average of B1 scenario.</p>
+					</div>
 				</div>
-				<div>
-					<h3>Estimated impact in lowering atmospheric greenhouse gases levels</h3>
-					<img src="img/legend-size.svg" alt="Legend bubble size">
+				<div id="mainChart">
+
+					<div id="view"></div>
+					<div id="chartTooltip"> </div>
 				</div>
-			</div>
-			
-			<div id="view"></div>
-		</main>
+			</main>
+		</section>
 		<footer>
 			<div class="container">
-				<section class="about">
-					<h2>About</h2>
-					<p>How can we possibly change our future if we’re not able to imagine it first? Camellia magic very inspirational copy shut up and take my money people in tears. Lorem ipsum dolor amet leggings franzen kombucha, wolf messenger bag PBR&B green juice VHS typewriter waistcoat. Semiotics yr everyday carry +1 gastropub small batch. Pop-up kinfolk flannel, vegan plaid four loko keytar chillwave flexitarian health goth bespoke. Lomo pinterest authentic air plant tumblr microdosing kale chips viral hella lumbersexual. Etsy hammock typewriter, mixtape kickstarter helvetica taxidermy affogato succulents deep v slow-carb austin normcore yuccie direct trade. Flexitarian street art try-hard mlkshk small batch, farm-to-table vape iPhone. Sartorial waistcoat retro four loko cray coloring book yr microdosing asymmetrical before they sold out wayfarers brooklyn.</p>
-				</section>
-
-				<section class="references">
+				<section class="references" id="bReference">
 					<h2>References</h2>
-					<ol>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">This is an example</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Illo iusto dolores magnam ratione!</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Tempore nostrum laborum sequi obcaecati.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Dice the potatoes and boil them in lightly salted water, until tender when jabbed with a fork.</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Adipisci, iste iusto quas eligendi corporis id eius corrupti temporibus velit?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Molestias harum voluptatibus veritatis explicabo ut velit deserunt, saepe sit commodi?</a></li>
-						<li><a href="https://www.cbsnews.com/live-news/global-climate-change-strike-protests-today-2019-09-20-live-updates/">Make sure to check out the fun little media query change</a></li>
-					</ol>
+					<div id="mylist"></div>
 				</section>
 			</div>
 
@@ -148,29 +90,23 @@
 
 		<section class="subfooter">
 			<div class="container">
-				<!-- <a href="https://www.vizzuality.com/"><img src="img/vizzuality-logo.svg" alt="Vizzuality"></a> -->
-				<a href="#"><img src="img/placeholder.svg"></a>
+				<a href="https://www.vizzuality.com/" title="Vizzuality website" target="_blank" onclick="gtag('event', 'click on Vizzuality website (bottom)')"><img src="img/vizzuality-logo.svg" alt="Vizzuality"></a>
 				<div class="social">
 					<span>Follow us:</span>
 					<ul>
-						<!-- <li><a href="https://twitter.com/vizzuality"><img src="img/social-twitter.svg" alt="Twitter"></a></li>
-						<li><a href="https://www.facebook.com/vizzuality/"><img src="img/social-facebook.svg" alt="Facebook"></a></li>
-						<li><a href="https://www.linkedin.com/company/vizzuality/"><img src="img/social-linkedin.svg" alt="LinkedIn"></a></li>
-						<li><a href="https://github.com/Vizzuality"><img src="img/social-github.svg" alt="GitHub"></a></li> -->
+						<li><a href="https://twitter.com/vizzuality" title="Vizzuality twitter" target="_blank" onclick="gtag('event', 'click on Twitter')"><img src="img/social-twitter.svg" alt="Twitter"></a></li>
+						<li><a href="https://www.facebook.com/vizzuality/" title="Vizzuality facebook" target="_blank" onclick="gtag('event', 'click on Facebook')"><img src="img/social-facebook.svg" alt="Facebook"></a></li>
+						<li><a href="https://www.linkedin.com/company/vizzuality/" title="Vizzuality linkedin" target="_blank" onclick="gtag('event', 'click on Linkedin')"><img src="img/social-linkedin.svg" alt="LinkedIn"></a></li>
+						<li><a href="https://github.com/Vizzuality" title="Vizzuality github" target="_blank" onclick="gtag('event', 'click on GitHub')"><img src="img/social-github.svg" alt="GitHub"></a></li>
 
-						<li><a href="#"><img src="img/social-twitter.svg" alt="Twitter"></a></li>
-						<li><a href="#"><img src="img/social-facebook.svg" alt="Facebook"></a></li>
-						<li><a href="#"><img src="img/social-linkedin.svg" alt="LinkedIn"></a></li>
-						<li><a href="#"><img src="img/social-github.svg" alt="GitHub"></a></li>
-						
 					</ul>
 				</div>
 			</div>
 		</section>
-		
-		
+
+
 	<script src="data/data.js"></script>
 	<script src="js/app.js"></script>
-		
+
 	</body>
 </html>

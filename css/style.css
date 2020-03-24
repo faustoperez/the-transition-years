@@ -10,6 +10,14 @@
     --social: #2BA4A0;
     --technology: #FFAA36;
     --science: #F84B5A;
+    --economy: #FF88AA;
+    --milestone: #000000;}
+
+@font-face {
+    font-family: 'Baskerville';
+    font-style:  normal;
+    font-display: fallback;
+    src: url("fonts/Baskerville.woff") format("woff");
 }
 
 @font-face {
@@ -56,18 +64,25 @@ p {
     margin: 1rem 0;
 }
 
+.wrapper {
+    min-height: 100vh;
+}
+
 .container {
     width: 90%;
     max-width: 1060px;
     margin: 0 auto;
 }
 
+header {
+    padding-bottom: 80px;
+}
+
 header h1 {
-    font-family: 'Baskerville', Georgia, serif;
-    font-size: 140px;
+    font-family: 'Baskerville', serif;
+    font-size: 120px;
     line-height: 0.75;
     text-align: center;
-    max-width: 800px;
     margin: 96px auto 0 auto;
 }
 
@@ -100,10 +115,13 @@ header h2:after {
 }
 
 header p {
-    font-size: 22px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+header p:first-of-type {
+    font-size: 24px;
+    margin-bottom: 36px;
 }
 
 header p a {
@@ -117,12 +135,21 @@ h2 {
 }
 
 h3 {
-    margin-top: 24px;
-    margin-bottom: 40px;
+    margin-top: 48px;
+    margin-bottom: 36px;
     line-height: 1.2;
     font-size: 18px;
     font-weight: 600;
     color: var(--text-color);
+}
+
+.legend div:first-child h3 {
+    margin-top: 24px;
+}
+
+.legend div:last-child h3 {
+    margin-top: 48px;
+    margin-bottom: 0;
 }
 
 main {
@@ -134,13 +161,14 @@ main {
 .legend {
     position: sticky;
     top: 20px;
+    width: 100%;
     max-width: 250px;
     border-top: 3px solid var(--text-color);
     padding-bottom: 60px;
 }
 
 .legend-bubbles {
-    margin-bottom: 60px;
+    margin-bottom: 48px;
 }
 
 .legend-bubbles span {
@@ -149,12 +177,21 @@ main {
     height: 18px;
     border-radius: 50%;
     margin: 0 12px 0 0;
-    background-color: var(--accent); 
+    background-color: var(--text-color); 
 }
 
 .legend img {
     min-width: 167px;
 }
+
+.legend-bubbles span.milestones {
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+    transform: rotate(45deg);
+    margin: 0 14px 0 2px;
+}
+
 
 .legend-bubbles span.politics {
     background-color: var(--politics);
@@ -175,6 +212,29 @@ main {
 .legend-bubbles span.social {
     background-color: var(--social);
 }
+.legend-bubbles span.economy {
+    background-color: var(--economy);
+}
+.legend-bubbles div.milestone {
+    width: 15px;
+    height: 15px;
+    background-color: var(--milestone);
+    display: inline-block;
+    margin: 0 14px 0 0;
+    
+    /* Rotate */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+/* Rotate Origin */
+    -webkit-transform-origin: 5 100%;
+    -moz-transform-origin: 5 100%;
+    -ms-transform-origin: 5 100%;
+    -o-transform-origin: 5 100%;
+    transform-origin: 5 100%;
+}
 
 .legend-bubbles li {
     display: flex;
@@ -184,39 +244,33 @@ main {
     font-weight: 600;
 }
 
-#view {
-    border-top: 3px solid var(--text-color);
-<<<<<<< HEAD
-    width: 100%;
-=======
-    margin-left: 5%;
->>>>>>> cb8db0118c907410eae1f53d0fa24d8928204a27
+.legend-bubbles li:first-of-type {
+    margin-bottom: 20px;
 }
 
+#mainContent {
+    display: flex;
+    padding-bottom: 120px;
+}
+#mainChart {
+    border-top: 3px solid var(--text-color);
+    margin-left: 5%;
+    flex: 1;
+    padding-top: 25px;
+}
+g.mark-symbol.role-mark.nodes  path {
+    mix-blend-mode: darken;
+}
 footer {
     background-color: var(--accent);
-    padding-bottom: 60px;
+    padding: 120px 0;
 }
 
 footer h2 {
-    font-family: 'Baskerville', Georgia, serif;
+    font-family: 'Baskerville', serif;
     font-size: 80px;
-}
-
-.about {
-    margin-top: 60px;
-    padding-top: 60px;
-}
-
-.about p {
-    column-count: 2;
-    column-gap: 80px;
-    font-size: 18px;
-}
-
-.references {
-    margin-top: 80px;
-
+    line-height: 1;
+    padding-bottom: 20px;
 }
 
 .references ol {
@@ -236,21 +290,22 @@ footer h2 {
     vertical-align: top;
 }
 
-.references a:hover {
+.references a:hover,
+.references a:focus {
     background-color: var(--white);
+    outline: none;
 }
 
 .subfooter {
     background: var(--text-color);
-    color: var(--white);
-    
+    color: var(--white);  
 }
 
 .subfooter .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    min-height: 100px;
 }
 
 .subfooter a {
@@ -294,25 +349,44 @@ footer h2 {
     .legend div {
         width: 45%;
     }
-
-    #view {
-        margin-left: 0
+    #mainChart {
+        margin-left: 0;
+        /* padding-top: 50px; */
     }
-
 }
 
 @media screen and (max-width: 800px) {
 
+    header {
+        padding-bottom: 40px;
+    }
+
     header h1 {
-        font-size: 96px;
+        font-size: 80px;
     }
 
     header h2, h3 {
-        font-size: 16px;;
+        font-size: 16px;
+    }
+
+    header p:first-of-type {
+        font-size: 18px;
     }
 
     header p {
-        font-size: 18px;
+        font-size: 15px;
+    }
+
+    #mainContent {
+        padding-bottom: 60px;
+    }
+
+    footer {
+        padding: 60px 0;
+    }
+
+    footer h2 {
+        font-size: 64px;
     }
 
     .references ol, .about p {
@@ -320,8 +394,15 @@ footer h2 {
         column-gap: 0;
     }
 
-    .subfooter {
+    .subfooter .container {
         flex-direction: column;
+        padding: 40px 0;
+        justify-content: normal;
+        height: auto;
+    }
+
+    .subfooter .social {
+        padding-top: 16px;
     }
 
     .legend {
@@ -332,5 +413,42 @@ footer h2 {
     .legend div {
         width: 100%;
     }
-
+    #chartTooltip {
+        width: 100%;
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+        padding: 16px;
+        margin: 0;
+        background-color: var(--white);
+        
+    } 
+    #chartTooltip h1 {
+        font-size: 14px;
+        line-height: 1;
+        text-align: left;
+        margin: 0;
+        font-weight: bold;
+        color: var(--text-color);
+    }
+    #chartTooltip p {
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: left;
+        margin: 0;
+        color: var(--text-color);
+    }
+    #chartTooltip a {
+        /* vertical-align: top; */
+        color: var(--text-color);
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: left;
+        margin: 0;
+        background-color: var(--accent)
+    }
+    
+    #chartTooltip a:touch-action {
+        background-color: var(--accent);
+    }
 }
